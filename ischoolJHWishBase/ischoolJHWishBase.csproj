@@ -69,6 +69,10 @@
       <HintPath>Library\FISCA.UDT.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="JHSchool.Data">
+      <HintPath>..\Library\JHSchool.Data.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="K12.Data, Version=2.0.0.2, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Library\K12.Data.dll</HintPath>
@@ -90,6 +94,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Calc\CalcMainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Calc\CalcMainForm.Designer.cs">
+      <DependentUpon>CalcMainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Calc\StudentExcess.cs" />
     <Compile Include="CheckExcessCreditsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -117,6 +128,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="SemesterData.cs" />
     <Compile Include="Utility.cs" />
     <Compile Include="WishJoinForm.cs">
       <SubType>Form</SubType>
@@ -153,6 +165,9 @@
     <Content Include="Library\K12.Presentation.xml" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Calc\CalcMainForm.resx">
+      <DependentUpon>CalcMainForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CheckExcessCreditsForm.resx">
       <DependentUpon>CheckExcessCreditsForm.cs</DependentUpon>
     </EmbeddedResource>
