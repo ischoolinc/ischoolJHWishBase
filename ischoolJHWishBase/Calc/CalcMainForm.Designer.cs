@@ -72,6 +72,7 @@
             this.DoubleBuffered = true;
             this.Name = "CalcMainForm";
             this.Text = "計算比序積分";
+            this.Load += new System.EventHandler(this.CalcMainForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -278,4 +278,22 @@ namespace ischoolJHWishBase
             return new List<SemesterData>(gradeyears.Values).ToArray();
         }
     }
+
+    public static class SemesterDataExtend
+    {
+        /// <summary>
+        /// 將資料變成只有學年度學期，年級統一為0。
+        /// </summary>
+        /// <param name="semesters"></param>
+        /// <returns></returns>
+        public static SemesterDataCollection ToSemesterOnly(this SemesterDataCollection semesters)
+        {
+            SemesterDataCollection result = new SemesterDataCollection();
+
+            foreach (SemesterData sd in semesters)
+                result.Add(new SemesterData(0, sd.SchoolYear, sd.Semester));
+
+            return result;
+        }
+    }
 }

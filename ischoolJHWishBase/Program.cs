@@ -9,6 +9,8 @@ using FISCA.Permission;
 using System.ComponentModel;
 using ischoolJHWishBase.DAO;
 using System.Windows.Forms;
+using K12.Data;
+using System.Data;
 
 namespace ischoolJHWishBase
 {
@@ -33,7 +35,7 @@ namespace ischoolJHWishBase
                 FISCA.ServerModule.AutoManaged("http://module.ischool.com.tw/module/137/KH_JH_EnrolmentExcessUDM/udm.xml");
 
             // 檢查學校名稱是否是高雄，主要是部分功能只有高雄使用
-           
+
             bool isLoadKh = false;
             if (K12.Data.School.ChineseName.Contains("高雄") || K12.Data.School.ChineseName.Contains("附中"))
                 isLoadKh = true;
@@ -86,7 +88,20 @@ namespace ischoolJHWishBase
                 MotherForm.RibbonBarItems["教務作業", "十二年國教"]["計算比序積分"].Enable = UserAcl.Current["ischoolJHWishBase.ExportExcessCreditsDataCalc"].Executable;
                 MotherForm.RibbonBarItems["教務作業", "十二年國教"]["計算比序積分"].Click += delegate
                 {
-                    new ischoolJHWishBase.Calc.CalcMainForm().ShowDialog();
+                    string sql = "select id from student where status in (1)";
+                    DataTable table = Utility.Q.Select(sql);
+                    List<string> ids = new List<string>();
+                    foreach (DataRow row in table.Rows)
+                        ids.Add(row["id"] + "");
+
+                    MotherForm.SetStatusBarMessage("");
+                    if (Control.ModifierKeys == Keys.Shift)
+                    {
+                        MotherForm.SetStatusBarMessage("只算選擇的學生喔!!!");
+                        ids = NLDPanels.Student.SelectedSource;
+                    }
+
+                    new ischoolJHWishBase.Calc.CalcMainForm(ids).ShowDialog();
                 };
 
                 // 產生志願比序資料
@@ -123,7 +138,7 @@ namespace ischoolJHWishBase
 
         static void _bgWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            
+
         }
 
         static void _bgWorker_DoWork(object sender, DoWorkEventArgs e)

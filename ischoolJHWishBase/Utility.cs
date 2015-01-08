@@ -6,6 +6,7 @@ using FISCA.Presentation.Controls;
 using Aspose.Cells;
 using System.IO;
 using System.Windows.Forms;
+using FISCA.Data;
 
 namespace ischoolJHWishBase
 {
@@ -60,6 +61,18 @@ namespace ischoolJHWishBase
                         return;
                     }
                 }
+            }
+        }
+
+        private static QueryHelper _q = null;
+        public static QueryHelper Q
+        {
+            get
+            {
+                if (_q == null)
+                    _q = new QueryHelper();
+
+                return _q;
             }
         }
     }

@@ -46,7 +46,7 @@
     </Reference>
     <Reference Include="FISCA, Version=2.1.4.8, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>Library\FISCA.dll</HintPath>
+      <HintPath>..\Library\FISCA.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="FISCA.Data, Version=1.0.0.3, Culture=neutral, processorArchitecture=MSIL">
@@ -100,7 +100,10 @@
     <Compile Include="Calc\CalcMainForm.Designer.cs">
       <DependentUpon>CalcMainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Calc\DomainScore.cs" />
+    <Compile Include="Calc\FitnessData.cs" />
     <Compile Include="Calc\StudentExcess.cs" />
+    <Compile Include="Calc\StudentExcessLoadExtend.cs" />
     <Compile Include="CheckExcessCreditsForm.cs">
       <SubType>Form</SubType>
     </Compile>
