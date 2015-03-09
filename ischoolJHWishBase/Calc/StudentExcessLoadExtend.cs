@@ -264,7 +264,7 @@ namespace ischoolJHWishBase.Calc
         {
             foreach (StudentExcess student in students)
             {
-                SemesterDataCollection allSems = student.FiveSemester.ToSemesterOnly();
+                SemesterDataCollection allSems = student.SixSemester.ToSemesterOnly();
 
                 //每學年的時數。
                 Dictionary<int, decimal> yearScore = new Dictionary<int, decimal>();
