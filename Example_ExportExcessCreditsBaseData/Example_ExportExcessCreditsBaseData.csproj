@@ -107,6 +107,7 @@
     <Compile Include="DAO\UDTTransfer.cs" />
     <Compile Include="DAO\UDT_EnrolmentExcessCredits.cs" />
     <Compile Include="DAO\UDT_EnrolmentExcessInputDate.cs" />
+    <Compile Include="tool.cs" />
     <Compile Include="Utility.cs" />
   </ItemGroup>
   <ItemGroup>

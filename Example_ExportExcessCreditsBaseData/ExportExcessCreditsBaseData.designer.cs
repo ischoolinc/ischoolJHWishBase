@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnExport = new DevComponents.DotNetBar.ButtonX();
             this.btnExit = new DevComponents.DotNetBar.ButtonX();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
@@ -54,8 +54,11 @@
             this.labelX8 = new DevComponents.DotNetBar.LabelX();
             this.cboType7 = new DevComponents.DotNetBar.Controls.ComboBoxEx();
             this.labelX9 = new DevComponents.DotNetBar.LabelX();
+            this.integerInput1 = new DevComponents.Editors.IntegerInput();
+            this.labelX10 = new DevComponents.DotNetBar.LabelX();
             ((System.ComponentModel.ISupportInitialize)(this.dgStudD1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgStudD2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.integerInput1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnExport
@@ -205,14 +208,14 @@
             this.dgStudD1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dgSel1cbo1,
             this.dgSel1cbo2});
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("微軟正黑體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgStudD1.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("微軟正黑體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgStudD1.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgStudD1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.dgStudD1.Location = new System.Drawing.Point(17, 72);
             this.dgStudD1.Name = "dgStudD1";
@@ -260,14 +263,14 @@
             this.dgStudD2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dgSel2cbo1,
             this.dgSel2cbo2});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("微軟正黑體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgStudD2.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("微軟正黑體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgStudD2.DefaultCellStyle = dataGridViewCellStyle4;
             this.dgStudD2.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.dgStudD2.Location = new System.Drawing.Point(17, 236);
             this.dgStudD2.Name = "dgStudD2";
@@ -438,11 +441,48 @@
             this.labelX9.TabIndex = 14;
             this.labelX9.Text = "家長";
             // 
+            // integerInput1
+            // 
+            this.integerInput1.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.integerInput1.BackgroundStyle.Class = "DateTimeInputBackground";
+            this.integerInput1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.integerInput1.ButtonFreeText.Checked = true;
+            this.integerInput1.ButtonFreeText.Shortcut = DevComponents.DotNetBar.eShortcut.F2;
+            this.integerInput1.FreeTextEntryMode = true;
+            this.integerInput1.Location = new System.Drawing.Point(350, 12);
+            this.integerInput1.MaxValue = 999;
+            this.integerInput1.MinValue = 90;
+            this.integerInput1.Name = "integerInput1";
+            this.integerInput1.ShowUpDown = true;
+            this.integerInput1.Size = new System.Drawing.Size(80, 25);
+            this.integerInput1.TabIndex = 15;
+            this.integerInput1.Value = 90;
+            // 
+            // labelX10
+            // 
+            this.labelX10.AutoSize = true;
+            this.labelX10.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelX10.BackgroundStyle.Class = "";
+            this.labelX10.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX10.Location = new System.Drawing.Point(297, 14);
+            this.labelX10.Name = "labelX10";
+            this.labelX10.Size = new System.Drawing.Size(47, 21);
+            this.labelX10.TabIndex = 16;
+            this.labelX10.Text = "學年度";
+            // 
             // ExportExcessCreditsBaseData
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(480, 528);
+            this.Controls.Add(this.labelX10);
+            this.Controls.Add(this.integerInput1);
             this.Controls.Add(this.cboType7);
             this.Controls.Add(this.labelX9);
             this.Controls.Add(this.cboType6);
@@ -465,10 +505,11 @@
             this.Controls.Add(this.btnExport);
             this.DoubleBuffered = true;
             this.Name = "ExportExcessCreditsBaseData";
-            this.Text = "外掛_學生會考報名檔";
+            this.Text = "學生會考報名檔";
             this.Load += new System.EventHandler(this.ExportExcessCreditsBaseData_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgStudD1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgStudD2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.integerInput1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -500,5 +541,7 @@
         private DevComponents.DotNetBar.LabelX labelX8;
         private DevComponents.DotNetBar.Controls.ComboBoxEx cboType7;
         private DevComponents.DotNetBar.LabelX labelX9;
+        private DevComponents.Editors.IntegerInput integerInput1;
+        private DevComponents.DotNetBar.LabelX labelX10;
     }
 }
