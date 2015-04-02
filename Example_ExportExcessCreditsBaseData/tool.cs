@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Xml.Linq;
 
-namespace Example_ExportExcessCreditsBaseData
+namespace ExportExcessCreditsBaseData
 {
     static public class tool
     {
@@ -135,8 +135,8 @@ namespace Example_ExportExcessCreditsBaseData
             retVal.Add("聽覺障礙", "3");
             retVal.Add("語言障礙", "4");
             retVal.Add("肢體障礙", "5");
-            retVal.Add("腦性麻痺", "7");
-            retVal.Add("身體病弱", "8");
+            retVal.Add("腦性麻痺", "6");
+            retVal.Add("身體病弱", "7");
             retVal.Add("情緒行為障礙", "8");
             retVal.Add("學習障礙", "9");
             retVal.Add("多重障礙", "A");

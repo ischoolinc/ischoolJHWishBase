@@ -8,8 +8,8 @@
     <ProjectGuid>{98C0294D-E233-4B46-9AD5-7BCBB2D3F339}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Example_ExportExcessCreditsBaseData</RootNamespace>
-    <AssemblyName>Example_ExportExcessCreditsBaseData_</AssemblyName>
+    <RootNamespace>ExportExcessCreditsBaseData</RootNamespace>
+    <AssemblyName>ExportExcessCreditsBaseData</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SccProjectName>SAK</SccProjectName>

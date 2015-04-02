@@ -5,7 +5,7 @@ using System.Text;
 using FISCA.Data;
 using System.Data;
 
-namespace Example_ExportExcessCreditsBaseData
+namespace ExportExcessCreditsBaseData
 {
     public class QueryTransfer
     {

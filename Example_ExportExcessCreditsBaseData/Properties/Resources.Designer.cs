@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Example_ExportExcessCreditsBaseData.Properties {
+namespace ExportExcessCreditsBaseData.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace Example_ExportExcessCreditsBaseData.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Example_ExportExcessCreditsBaseData.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ExportExcessCreditsBaseData.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

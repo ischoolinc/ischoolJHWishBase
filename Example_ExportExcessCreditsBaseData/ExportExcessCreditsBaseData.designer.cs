@@ -1,4 +1,4 @@
-﻿namespace Example_ExportExcessCreditsBaseData
+﻿namespace ExportExcessCreditsBaseData
 {
     partial class ExportExcessCreditsBaseData
     {

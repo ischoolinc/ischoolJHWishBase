@@ -7,7 +7,7 @@ using Aspose.Cells;
 using System.IO;
 using System.Windows.Forms;
 
-namespace Example_ExportExcessCreditsBaseData
+namespace ExportExcessCreditsBaseData
 {
     public class Utility
     {

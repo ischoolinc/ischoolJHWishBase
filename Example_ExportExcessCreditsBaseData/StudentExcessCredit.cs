@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Example_ExportExcessCreditsBaseData
+namespace ExportExcessCreditsBaseData
 {
     /// <summary>
     /// 學生積分比序資料

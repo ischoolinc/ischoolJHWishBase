@@ -6,7 +6,7 @@ using FISCA;
 using FISCA.Permission;
 using FISCA.Presentation;
 
-namespace Example_ExportExcessCreditsBaseData
+namespace ExportExcessCreditsBaseData
 {
     public class Program
     {

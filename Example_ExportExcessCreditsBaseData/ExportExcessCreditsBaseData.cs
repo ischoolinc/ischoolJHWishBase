@@ -13,7 +13,7 @@ using K12.Data.Configuration;
 using Aspose.Cells;
 using System.IO;
 
-namespace Example_ExportExcessCreditsBaseData
+namespace ExportExcessCreditsBaseData
 {
     /// <summary>
     /// 產生志願學生基本資料ExportExcessCreditsBaseData_Load

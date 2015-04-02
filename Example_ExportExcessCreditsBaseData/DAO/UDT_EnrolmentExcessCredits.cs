@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using FISCA.UDT;
 
-namespace Example_ExportExcessCreditsBaseData
+namespace ExportExcessCreditsBaseData
 {
     /// <summary>
     /// 比序績分主檔
