@@ -1,0 +1,160 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{98C0294D-E233-4B46-9AD5-7BCBB2D3F339}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ExportExcessCreditsBaseData</RootNamespace>
+    <AssemblyName>ExportExcessCreditsBaseData</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>obj\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Aspose.Cells, Version=4.4.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ischool desktop\modules\SHSchoolLoader\Aspose.Cells.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevComponents.DotNetBar2, Version=9.5.0.1, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ischool desktop\components\DevComponents.DotNetBar2.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="FISCA">
+      <HintPath>..\..\..\..\TFS2010-Git\Library\FISCA.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="FISCA.Data">
+      <HintPath>..\..\..\..\TFS2010-Git\Library\FISCA.Data.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="FISCA.Permission">
+      <HintPath>..\..\..\..\TFS2010-Git\Library\FISCA.Permission.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="FISCA.Presentation">
+      <HintPath>..\..\..\..\TFS2010-Git\Library\FISCA.Presentation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="FISCA.UDT">
+      <HintPath>..\..\..\..\TFS2010-Git\Library\FISCA.UDT.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="K12.Data">
+      <HintPath>..\..\..\..\TFS2010-Git\Library\K12.Data.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="K12.DataRationality">
+      <HintPath>..\..\..\..\TFS2010-Git\Library\K12.DataRationality.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="K12.Presentation">
+      <HintPath>..\..\..\..\TFS2010-Git\Library\K12.Presentation.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Program.cs" />
+    <Compile Include="ExportExcessCreditsBaseData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExportExcessCreditsBaseData.designer.cs">
+      <DependentUpon>ExportExcessCreditsBaseData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="QueryTransfer.cs" />
+    <Compile Include="StudentExcessCredit.cs" />
+    <Compile Include="DAO\UDTConfig.cs" />
+    <Compile Include="DAO\UDTTransfer.cs" />
+    <Compile Include="DAO\UDT_EnrolmentExcessCredits.cs" />
+    <Compile Include="DAO\UDT_EnrolmentExcessInputDate.cs" />
+    <Compile Include="tool.cs" />
+    <Compile Include="Utility.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ExportExcessCreditsBaseData.resx">
+      <DependentUpon>ExportExcessCreditsBaseData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\基本資料樣板.xls" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Library\Aspose.Cells.dll" />
+    <Content Include="Library\Aspose.Cells.xml" />
+    <Content Include="Library\DevComponents.DotNetBar2.dll" />
+    <Content Include="Library\FISCA.Data.dll" />
+    <Content Include="Library\FISCA.Data.pdb" />
+    <Content Include="Library\FISCA.Data.xml" />
+    <Content Include="Library\FISCA.dll" />
+    <Content Include="Library\FISCA.pdb" />
+    <Content Include="Library\FISCA.Permission.dll" />
+    <Content Include="Library\FISCA.Permission.pdb" />
+    <Content Include="Library\FISCA.Permission.xml" />
+    <Content Include="Library\FISCA.Presentation.dll" />
+    <Content Include="Library\FISCA.Presentation.pdb" />
+    <Content Include="Library\FISCA.Presentation.xml" />
+    <Content Include="Library\FISCA.UDT.dll" />
+    <Content Include="Library\FISCA.UDT.pdb" />
+    <Content Include="Library\FISCA.UDT.xml" />
+    <Content Include="Library\K12.Data.dll" />
+    <Content Include="Library\K12.Data.pdb" />
+    <Content Include="Library\K12.Data.xml" />
+    <Content Include="Library\K12.DataRationality.dll" />
+    <Content Include="Library\K12.DataRationality.pdb" />
+    <Content Include="Library\K12.Presentation.dll" />
+    <Content Include="Library\K12.Presentation.xml" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
