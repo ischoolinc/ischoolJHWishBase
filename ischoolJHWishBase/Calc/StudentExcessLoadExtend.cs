@@ -85,7 +85,12 @@ namespace ischoolJHWishBase.Calc
             DataTable table = Utility.Q.Select(sql);
 
             //服務學期資料 Lookup
-            Dictionary<string, StudentExcess> StudentLookup = students.ToDictionary(x => x.StudentID);
+            //Dictionary<string, StudentExcess> StudentLookup = students.ToDictionary(x => x.StudentID);
+
+            Dictionary<string, StudentExcess> StudentLookup = new Dictionary<string, StudentExcess>();
+            foreach (StudentExcess data in students)
+                if (!StudentLookup.ContainsKey(data.StudentID))
+                    StudentLookup.Add(data.StudentID, data);
 
             foreach (DataRow row in table.Rows)
             {
@@ -120,7 +125,13 @@ namespace ischoolJHWishBase.Calc
             sql = string.Format(sql, students.ToPrimaryKeyStringList());
             DataTable table = Utility.Q.Select(sql);
 
-            Dictionary<string, StudentExcess> StudentLookup = students.ToDictionary(x => x.StudentID);
+//            Dictionary<string, StudentExcess> StudentLookup = students.ToDictionary(x => x.StudentID);
+
+            Dictionary<string, StudentExcess> StudentLookup = new Dictionary<string, StudentExcess>();
+            foreach (StudentExcess data in students)
+                if (!StudentLookup.ContainsKey(data.StudentID))
+                    StudentLookup.Add(data.StudentID, data);
+
 
             foreach (DataRow row in table.Rows)
             {
@@ -157,7 +168,13 @@ namespace ischoolJHWishBase.Calc
             sql = string.Format(sql, students.ToPrimaryKeyStringList());
             DataTable table = Utility.Q.Select(sql);
 
-            Dictionary<string, StudentExcess> StudentLookup = students.ToDictionary(x => x.StudentID);
+         //   Dictionary<string, StudentExcess> StudentLookup = students.ToDictionary(x => x.StudentID);
+
+            Dictionary<string, StudentExcess> StudentLookup = new Dictionary<string, StudentExcess>();
+            foreach (StudentExcess data in students)
+                if (!StudentLookup.ContainsKey(data.StudentID))
+                    StudentLookup.Add(data.StudentID, data);
+
 
             foreach (DataRow row in table.Rows)
             {
@@ -202,7 +219,12 @@ namespace ischoolJHWishBase.Calc
             sql = string.Format(sql, students.ToPrimaryKeyStringList());
             DataTable table = Utility.Q.Select(sql);
 
-            Dictionary<string, StudentExcess> StudentLookup = students.ToDictionary(x => x.StudentID);
+          //  Dictionary<string, StudentExcess> StudentLookup = students.ToDictionary(x => x.StudentID);
+
+            Dictionary<string, StudentExcess> StudentLookup = new Dictionary<string, StudentExcess>();
+            foreach (StudentExcess data in students)
+                if (!StudentLookup.ContainsKey(data.StudentID))
+                    StudentLookup.Add(data.StudentID, data);
 
             foreach (DataRow row in table.Rows)
             {

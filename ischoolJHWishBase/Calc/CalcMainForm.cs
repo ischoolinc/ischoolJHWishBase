@@ -81,7 +81,15 @@ namespace ischoolJHWishBase.Calc
             string cond = string.Format("ref_student_id in ({0})", students.ToPrimaryKeyStringList());
             List<ExcessCredits> credits = access.Select<ExcessCredits>(cond);
 
-            Dictionary<string, ExcessCredits> creditLookup = credits.ToDictionary(x => x.StudentID.ToString());
+            // Dictionary<string, ExcessCredits> creditLookup = credits.ToDictionary(x => x.StudentID.ToString());
+            Dictionary<string, ExcessCredits> creditLookup = new Dictionary<string, ExcessCredits>();
+            foreach (ExcessCredits data in credits)
+            {
+                string StudentID = data.StudentID.ToString();
+                if (!creditLookup.ContainsKey(StudentID))
+                    creditLookup.Add(StudentID, data);
+            }
+
 
             List<ExcessCredits> saveList = new List<ExcessCredits>();
 
