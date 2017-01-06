@@ -83,15 +83,21 @@ namespace ischoolJHWishBase.Calc
 
             // Dictionary<string, ExcessCredits> creditLookup = credits.ToDictionary(x => x.StudentID.ToString());
             Dictionary<string, ExcessCredits> creditLookup = new Dictionary<string, ExcessCredits>();
+            List<ExcessCredits> saveList = new List<ExcessCredits>();
+
             foreach (ExcessCredits data in credits)
             {
                 string StudentID = data.StudentID.ToString();
                 if (!creditLookup.ContainsKey(StudentID))
                     creditLookup.Add(StudentID, data);
+                else
+                {
+                    // 如果有重覆刪除資料
+                    data.Deleted = true;
+                    saveList.Add(data);
+                }
             }
-
-
-            List<ExcessCredits> saveList = new List<ExcessCredits>();
+           
 
             foreach (StudentExcess student in students)
             {
