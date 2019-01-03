@@ -361,6 +361,8 @@ namespace ExportExcessCreditsBaseData
                     if (_SelectMappingDict1.ContainsKey(strType1))
                         dr["地區代碼"] = _SelectMappingDict1[strType1];
 
+                    dr["集報單位代碼"] = K12.Data.School.Code;
+
                     dr["學號"] = _StudentDict[id].StudentNumber;
                     dr["班級"] = "";
                     if (_ClassNameDict.ContainsKey(_StudentDict[id].RefClassID))
@@ -390,7 +392,7 @@ namespace ExportExcessCreditsBaseData
 
                     dr["畢業學校代碼"] = K12.Data.School.Code;
 
-                    dr["畢業年"] = K12.Data.School.DefaultSchoolYear.PadLeft(3, '0');
+                    dr["畢業年"] = integerInput1.Value;
                     dr["畢肄業"] = "1";
                     dr["學生身分"] = "0";
                     dr["身心障礙"] = "0";
