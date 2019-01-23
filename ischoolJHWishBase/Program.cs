@@ -11,6 +11,7 @@ using ischoolJHWishBase.DAO;
 using System.Windows.Forms;
 using K12.Data;
 using System.Data;
+using ischoolJHWishBase.ExportGradeSelect;
 
 namespace ischoolJHWishBase
 {
@@ -74,8 +75,14 @@ namespace ischoolJHWishBase
                 MotherForm.RibbonBarItems["教務作業", "十二年國教"]["產生志願比序資料"].Enable = UserAcl.Current["ischoolJHWishBase.ExportExcessCreditsData"].Executable;
                 MotherForm.RibbonBarItems["教務作業", "十二年國教"]["產生志願比序資料"].Click += delegate
                 {
-                    ExportExcessCreditsData eecd = new ExportExcessCreditsData();
-                    eecd.Run();
+
+                    //Jean 產生  可選擇 from
+
+                    SelectGradeToExport selectGradeForm = new SelectGradeToExport();
+                    selectGradeForm.ShowDialog();
+                    //Jean 註解
+                   // ExportExcessCreditsData eecd = new ExportExcessCreditsData();
+                    //eecd.Run();
                 };
 
                 // 產生志願比序資料

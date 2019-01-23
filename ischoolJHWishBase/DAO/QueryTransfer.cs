@@ -46,14 +46,16 @@ namespace ischoolJHWishBase.DAO
         /// 取得三年級狀態為一般，志願比序資料
         /// </summary>
         /// <returns></returns>
-        public static DataTable GetStudentExcessCreditDataTable()
+        public static DataTable GetStudentExcessCreditDataTable(int gradeYear=3)
         {
             DataTable dt = new DataTable();
             QueryHelper qh = new QueryHelper();
-            string strSQL = "select student.id as sid,student.name as 學生姓名,class_name,seat_no,student_number,id_number as 身分證號統一編號,student.birthdate as 出生年月日,balanced as 均衡學習,services as 服務學習,fitness as 體適能,competition as 競賽表現,verification as 檢定證照,merit as 獎勵紀錄,term as 幹部任期 from student inner join class on student.ref_class_id=class.id left join $kh.enrolment_excess.credits on student.id=$kh.enrolment_excess.credits.ref_student_id where student.status=1 and class.grade_year in(3,9) order by class.class_name,student.seat_no;";
+            string strSQL = $"select student.id as sid,student.name as 學生姓名,class_name,seat_no,student_number,id_number as 身分證號統一編號,student.birthdate as 出生年月日,balanced as 均衡學習,services as 服務學習,fitness as 體適能,competition as 競賽表現,verification as 檢定證照,merit as 獎勵紀錄,term as 幹部任期 from student inner join class on student.ref_class_id=class.id left join $kh.enrolment_excess.credits on student.id=$kh.enrolment_excess.credits.ref_student_id where student.status=1 and class.grade_year in({gradeYear},{6+ gradeYear}) order by class.class_name,student.seat_no;";
             dt = qh.Select(strSQL);
             return dt;
         }
+
+
 
         /// <summary>
         /// 取得學生類別 p:name

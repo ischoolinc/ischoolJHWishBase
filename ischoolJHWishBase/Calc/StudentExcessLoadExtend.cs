@@ -51,6 +51,7 @@ namespace ischoolJHWishBase.Calc
 
             DataTable table = Utility.Q.Select(sql);
             Dictionary<string, XElement> dicSemsHistory = new Dictionary<string, XElement>();
+            //抓學生歷程
             foreach (DataRow row in table.Rows)
             {
                 string id = row["id"] + "";

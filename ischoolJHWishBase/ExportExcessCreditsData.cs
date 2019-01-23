@@ -21,8 +21,11 @@ namespace ischoolJHWishBase
         List<string> _ColNameList;
         Dictionary<string, int> _ColNameDict;
         Dictionary<string, int> _formatMappingDict;
-        public ExportExcessCreditsData()
+        int _gradeYear;
+
+        public ExportExcessCreditsData(int gradeYear=2)
         {
+            _gradeYear = gradeYear;
             _dtTable = new DataTable();
             _wb = new Workbook();
             _ColNameList = new List<string>();
@@ -67,6 +70,11 @@ namespace ischoolJHWishBase
         
         }
 
+
+
+
+
+
         void _bgWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             // 產生 Excel
@@ -83,8 +91,8 @@ namespace ischoolJHWishBase
 
         void _bgWorker_DoWork(object sender, DoWorkEventArgs e)
         {
-            // 取得資料
-            _dtTable = QueryTransfer.GetStudentExcessCreditDataTable();
+            // 取得特定年級資料
+            _dtTable = QueryTransfer.GetStudentExcessCreditDataTable(_gradeYear);
 
             // 讀取樣板            
             _wb.Open(new MemoryStream(Properties.Resources.比序資料樣板));

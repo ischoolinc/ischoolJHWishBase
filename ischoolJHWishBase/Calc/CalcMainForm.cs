@@ -114,8 +114,8 @@ namespace ischoolJHWishBase.Calc
 
                 saveList.Add(credit);
             }
-
-            saveList.SaveAll();
+            //ask
+            List<string> changeUid = saveList.SaveAll();
         }
 
         private void MainWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
