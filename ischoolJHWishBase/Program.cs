@@ -76,12 +76,10 @@ namespace ischoolJHWishBase
                 MotherForm.RibbonBarItems["教務作業", "十二年國教"]["產生志願比序資料"].Click += delegate
                 {
 
-                    //Jean 產生  可選擇 from
-
+                    //產生可選擇年級Form
                     SelectGradeToExport selectGradeForm = new SelectGradeToExport();
                     selectGradeForm.ShowDialog();
-                    //Jean 註解
-                   // ExportExcessCreditsData eecd = new ExportExcessCreditsData();
+                    // ExportExcessCreditsData eecd = new ExportExcessCreditsData();
                     //eecd.Run();
                 };
 

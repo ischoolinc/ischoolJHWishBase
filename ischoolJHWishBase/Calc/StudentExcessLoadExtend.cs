@@ -289,12 +289,15 @@ namespace ischoolJHWishBase.Calc
             {
                 SemesterDataCollection allSems = student.SixSemester.ToSemesterOnly();
 
+
                 //每學年的時數。
                 Dictionary<int, decimal> yearScore = new Dictionary<int, decimal>();
-                foreach (SemesterData sems in allSems)
+                foreach (SemesterData sems in allSems) 
                 {
+                   
                     if (student.ServiceLearning.ContainsKey(sems))
                     {
+
                         if (!yearScore.ContainsKey(sems.SchoolYear))
                             yearScore[sems.SchoolYear] = 0;
 

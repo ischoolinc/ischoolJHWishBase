@@ -21,9 +21,9 @@ namespace ischoolJHWishBase
         List<string> _ColNameList;
         Dictionary<string, int> _ColNameDict;
         Dictionary<string, int> _formatMappingDict;
-        int _gradeYear;
+        private int _gradeYear;//選擇產出年級
 
-        public ExportExcessCreditsData(int gradeYear=2)
+        public ExportExcessCreditsData(int gradeYear)
         {
             _gradeYear = gradeYear;
             _dtTable = new DataTable();
@@ -54,8 +54,6 @@ namespace ischoolJHWishBase
             _formatMappingDict.Add("檢定證照", 2);
             _formatMappingDict.Add("獎勵紀錄", 4);
             _formatMappingDict.Add("幹部任期", 2);
-
-            
            
             int i = 0;
             foreach (string str in _ColNameList)
@@ -67,12 +65,7 @@ namespace ischoolJHWishBase
             _bgWorker = new BackgroundWorker();
             _bgWorker.DoWork += new DoWorkEventHandler(_bgWorker_DoWork);
             _bgWorker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(_bgWorker_RunWorkerCompleted);
-        
         }
-
-
-
-
 
 
         void _bgWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -93,7 +86,6 @@ namespace ischoolJHWishBase
         {
             // 取得特定年級資料
             _dtTable = QueryTransfer.GetStudentExcessCreditDataTable(_gradeYear);
-
             // 讀取樣板            
             _wb.Open(new MemoryStream(Properties.Resources.比序資料樣板));
 

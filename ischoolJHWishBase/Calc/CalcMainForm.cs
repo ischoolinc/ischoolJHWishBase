@@ -74,9 +74,9 @@ namespace ischoolJHWishBase.Calc
             students.CalcCadre();   //計算幹部比序積分。
             students.CalcFitness(); //計算體適能比序積分。 
             students.CalcDomainScore(); //計算領域成績比序積分。
-
             MainWorker.ReportProgress(55);
 
+            //載入積分table資料
             AccessHelper access = new AccessHelper();
             string cond = string.Format("ref_student_id in ({0})", students.ToPrimaryKeyStringList());
             List<ExcessCredits> credits = access.Select<ExcessCredits>(cond);
@@ -85,6 +85,7 @@ namespace ischoolJHWishBase.Calc
             Dictionary<string, ExcessCredits> creditLookup = new Dictionary<string, ExcessCredits>();
             List<ExcessCredits> saveList = new List<ExcessCredits>();
 
+          
             foreach (ExcessCredits data in credits)
             {
                 string StudentID = data.StudentID.ToString();
@@ -98,12 +99,14 @@ namespace ischoolJHWishBase.Calc
                 }
             }
            
-
+            //本次計算結果 
             foreach (StudentExcess student in students)
             {
                 ExcessCredits credit = new ExcessCredits();
+                //如果table包含本次計算的student_id
                 if (creditLookup.ContainsKey(student.StudentID))
                     credit = creditLookup[student.StudentID];
+                //如果table裡沒有包含計算結果資料>>>>加入  
                 else
                     credit.StudentID = int.Parse(student.StudentID);
 
@@ -114,7 +117,7 @@ namespace ischoolJHWishBase.Calc
 
                 saveList.Add(credit);
             }
-            //ask
+           
             List<string> changeUid = saveList.SaveAll();
         }
 
