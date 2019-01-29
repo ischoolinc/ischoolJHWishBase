@@ -22,6 +22,7 @@ namespace ischoolJHWishBase
         Dictionary<string, int> _ColNameDict;
         Dictionary<string, int> _formatMappingDict;
         private int _gradeYear;//選擇產出年級
+        private DevComponents.DotNetBar.ButtonX _btn;
 
         public ExportExcessCreditsData(int gradeYear)
         {
@@ -54,7 +55,7 @@ namespace ischoolJHWishBase
             _formatMappingDict.Add("檢定證照", 2);
             _formatMappingDict.Add("獎勵紀錄", 4);
             _formatMappingDict.Add("幹部任期", 2);
-           
+
             int i = 0;
             foreach (string str in _ColNameList)
             {
@@ -72,14 +73,16 @@ namespace ischoolJHWishBase
         {
             // 產生 Excel
             Utility.CompletedXls("志願比序資料", _wb);
+            _btn.Enabled = true;
         }
 
         /// <summary>
         /// 執行
         /// </summary>
-        public void Run()
+        public void Run(DevComponents.DotNetBar.ButtonX btn)
         {
             _bgWorker.RunWorkerAsync();
+            _btn = btn;
         }
 
         void _bgWorker_DoWork(object sender, DoWorkEventArgs e)
@@ -94,29 +97,29 @@ namespace ischoolJHWishBase
             {
                 // 出生年月日解析
                 DateTime dt;
-                string sYY = "", sMM = "", sDD = "";                
+                string sYY = "", sMM = "", sDD = "";
 
                 if (DateTime.TryParse(dr["出生年月日"].ToString(), out dt))
                 {
-                    sYY =(dt.Year-1911).ToString();
-                    sMM =dt.Month.ToString();
-                    sDD =dt.Day.ToString();
-                }                                
+                    sYY = (dt.Year - 1911).ToString();
+                    sMM = dt.Month.ToString();
+                    sDD = dt.Day.ToString();
+                }
 
                 col = 0;
                 foreach (string colName in _ColNameList)
-                {                    
+                {
                     if (colName == "出生年")
                     {
-                        _wb.Worksheets[0].Cells[row, col].PutValue(strParse(sYY,colName));
+                        _wb.Worksheets[0].Cells[row, col].PutValue(strParse(sYY, colName));
                     }
-                    else if(colName == "出生月")
+                    else if (colName == "出生月")
                     {
-                        _wb.Worksheets[0].Cells[row, col].PutValue(strParse(sMM,colName));
+                        _wb.Worksheets[0].Cells[row, col].PutValue(strParse(sMM, colName));
                     }
                     else if (colName == "出生日")
                     {
-                        _wb.Worksheets[0].Cells[row, col].PutValue(strParse(sDD,colName));
+                        _wb.Worksheets[0].Cells[row, col].PutValue(strParse(sDD, colName));
                     }
                     //else if (colName == "服務學習" || colName=="獎勵紀錄")
                     //{ 
@@ -154,12 +157,12 @@ namespace ischoolJHWishBase
         /// <param name="value"></param>
         /// <param name="colName"></param>
         /// <returns></returns>
-        private string strParse(string value,string colName)
+        private string strParse(string value, string colName)
         {
             if (string.IsNullOrEmpty(value))
                 return "";
             else
-                return value.PadLeft(_formatMappingDict[colName],'0');
+                return value.PadLeft(_formatMappingDict[colName], '0');
         }
     }
 }

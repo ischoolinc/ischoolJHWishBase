@@ -18,12 +18,12 @@ namespace ischoolJHWishBase.ExportGradeSelect
         public SelectGradeToExport()
         {
             InitializeComponent();
-            
+
         }
 
         private void SelectGradeToExport_Load(object sender, EventArgs e)
         {
-         
+
             comboGrade.Items.Add("1");
             comboGrade.Items.Add("2");
             comboGrade.Items.Add("3");
@@ -39,8 +39,9 @@ namespace ischoolJHWishBase.ExportGradeSelect
 
         private void btnExport_Click(object sender, EventArgs e)
         {
-             ExportExcessCreditsData eecd = new ExportExcessCreditsData(_gradeYear);
-             eecd.Run(); 
+            btnExport.Enabled = false;
+            ExportExcessCreditsData eecd = new ExportExcessCreditsData(_gradeYear);
+            eecd.Run(btnExport);
         }
 
     }
