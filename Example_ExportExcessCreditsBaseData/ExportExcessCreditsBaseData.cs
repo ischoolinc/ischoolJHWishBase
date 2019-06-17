@@ -87,7 +87,12 @@ namespace ExportExcessCreditsBaseData
         private void ExportExcessCreditsBaseData_Load(object sender, EventArgs e)
         {
             btnExport.Enabled = false;
-            integerInput1.Value = int.Parse(School.DefaultSchoolYear);
+
+            int school = 108;
+            if (int.TryParse(School.DefaultSchoolYear, out school))
+            {
+                integerInput1.Value = school + 1;
+            }
 
             _bgWorkerLoad.RunWorkerAsync();
         }

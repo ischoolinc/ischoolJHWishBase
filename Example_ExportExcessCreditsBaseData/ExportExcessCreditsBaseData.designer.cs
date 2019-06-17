@@ -454,12 +454,12 @@
             this.integerInput1.FreeTextEntryMode = true;
             this.integerInput1.Location = new System.Drawing.Point(350, 12);
             this.integerInput1.MaxValue = 999;
-            this.integerInput1.MinValue = 90;
+            this.integerInput1.MinValue = 100;
             this.integerInput1.Name = "integerInput1";
             this.integerInput1.ShowUpDown = true;
             this.integerInput1.Size = new System.Drawing.Size(80, 25);
             this.integerInput1.TabIndex = 15;
-            this.integerInput1.Value = 90;
+            this.integerInput1.Value = 107;
             // 
             // labelX10
             // 
