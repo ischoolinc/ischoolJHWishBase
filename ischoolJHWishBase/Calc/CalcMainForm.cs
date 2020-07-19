@@ -29,6 +29,7 @@ namespace ischoolJHWishBase.Calc
 
         private void CalcMainForm_Load(object sender, EventArgs e)
         {
+            this.MaximumSize = this.MinimumSize = this.Size;
             try
             {
                 MainWorker = new BackgroundWorker();

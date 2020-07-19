@@ -399,11 +399,14 @@ namespace ischoolJHWishBase.Calc
 
         public static void CalcDomainScore(this List<StudentExcess> students)
         {
+            // 因為 108課綱需要加入 藝術、科技 判斷
             //得分項目。
             HashSet<string> lookup = new HashSet<string>(new string[] {
                 "健康與體育",
                 "藝術與人文", //藝術與人文
-                "綜合活動"
+                "綜合活動",
+                "藝術",
+                "科技"
             });
 
             foreach (StudentExcess student in students) //所有學生。
@@ -451,6 +454,8 @@ namespace ischoolJHWishBase.Calc
                         score = 6;
                         break;
                     case 3:
+                    case 4:
+                    case 5:
                         score = 10;
                         break;
                 }
