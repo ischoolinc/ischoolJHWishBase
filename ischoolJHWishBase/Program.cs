@@ -36,9 +36,9 @@ namespace ischoolJHWishBase
                 FISCA.ServerModule.AutoManaged("http://module.ischool.com.tw/module/137/KH_JH_EnrolmentExcessUDM/udm.xml");
 
             // 檢查學校名稱是否是高雄，主要是部分功能只有高雄使用
-
+            //2021-02-09 Cyn，增加一所學校j.ccafps.kh.edu.tw
             bool isLoadKh = false;
-            if (K12.Data.School.ChineseName.Contains("高雄") || K12.Data.School.ChineseName.Contains("附中"))
+            if (K12.Data.School.ChineseName.Contains("高雄") || K12.Data.School.ChineseName.Contains("附中") || K12.Data.School.ChineseName.Contains("中正國防幹部預備學校"))
                 isLoadKh = true;
 
             // 高雄特有功能
