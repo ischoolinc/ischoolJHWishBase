@@ -281,6 +281,8 @@ namespace ischoolJHWishBase.Calc
 
         /// <summary>
         /// 計算服務學期時數積分。
+        /// 2021-10 Cynthia 採計以學年為單位，每滿3小時調整為採計2分，未滿3小時仍維持不予採計，並取消每一學年採計上限，為三學年採計上現仍為10分
+        /// https://3.basecamp.com/4399967/buckets/15852426/todos/4240673684
         /// </summary>
         /// <param name="students"></param>
         public static void CalcServiceLearning(this List<StudentExcess> students)
@@ -305,16 +307,17 @@ namespace ischoolJHWishBase.Calc
                     }
                 }
 
-                //計算積分。
+                //計算積分。  (2021-10 由1分改為2分)
                 foreach (int year in yearScore.Keys.ToArray())
-                    yearScore[year] = Math.Floor(yearScore[year] / 3);
+                    //yearScore[year] = Math.Floor(yearScore[year] / 3);
+                    yearScore[year] = (Math.Floor(yearScore[year] / 3))*2;
 
-                //限制每學年積分上限。
-                foreach (int year in yearScore.Keys.ToArray())
-                {
-                    if (yearScore[year] > 4)
-                        yearScore[year] = 4;
-                }
+                ////限制每學年積分上限。 (2021-10 取消每學年上限)
+                //foreach (int year in yearScore.Keys.ToArray())
+                //{
+                //    if (yearScore[year] > 4)
+                //        yearScore[year] = 4;
+                //}
 
                 //計算總分。
                 decimal score = 0;
@@ -397,13 +400,19 @@ namespace ischoolJHWishBase.Calc
             }
         }
 
+        /// <summary>
+        /// 計算領域成績比序積分。
+        /// 2021-10 Cynthia 移除"藝術與人文"，從 健康與體育、綜合活動、藝術、科技 四個領域判斷，1個及格3分，2個及格6分，3個以上及格10分
+        /// https://3.basecamp.com/4399967/buckets/15852426/todos/4240673684
+        /// </summary>
+        /// <param name="students"></param>
         public static void CalcDomainScore(this List<StudentExcess> students)
         {
             // 因為 108課綱需要加入 藝術、科技 判斷
             //得分項目。
             HashSet<string> lookup = new HashSet<string>(new string[] {
                 "健康與體育",
-                "藝術與人文", //藝術與人文
+                //"藝術與人文", //藝術與人文
                 "綜合活動",
                 "藝術",
                 "科技"
@@ -445,6 +454,7 @@ namespace ischoolJHWishBase.Calc
 
                 decimal score = 0;
 
+
                 switch (passCount)
                 {
                     case 1:
@@ -454,7 +464,11 @@ namespace ischoolJHWishBase.Calc
                         score = 6;
                         break;
                     case 3:
+                        score = 10;
+                        break;
                     case 4:
+                        score = 10;
+                        break;
                     case 5:
                         score = 10;
                         break;
