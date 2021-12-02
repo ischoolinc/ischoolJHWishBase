@@ -280,6 +280,43 @@ namespace ischoolJHWishBase.Calc
         }
 
         /// <summary>
+        /// 取得學生年級。
+        /// </summary>
+        public static void GetGradeYear(this List<StudentExcess> students)
+        {
+            //資料表：K12.Service.Learning.Record
+            if (students == null || students.Count <= 0)
+                return;
+
+            string sql = @"SELECT student.id, class.grade_year 
+                                        FROM student 
+                                        LEFT JOIN class ON student.ref_class_id = class.id
+                                        WHERE student.id in ({0}) ";
+
+            sql = string.Format(sql, students.ToPrimaryKeyStringList());
+
+            DataTable table = Utility.Q.Select(sql);
+
+            Dictionary<string, StudentExcess> StudentLookup = new Dictionary<string, StudentExcess>();
+            foreach (StudentExcess data in students)
+                if (!StudentLookup.ContainsKey(data.StudentID))
+                    StudentLookup.Add(data.StudentID, data);
+
+            foreach (DataRow row in table.Rows)
+            {
+                string id = row["id"] + "";
+                string gyear = row["grade_year"] + "";
+
+                if (!StudentLookup.ContainsKey(id))
+                    continue;
+
+                StudentExcess se = StudentLookup[id];
+
+                se.GradeYear = gyear;
+            }
+        }
+
+        /// <summary>
         /// 計算服務學期時數積分。
         /// 2021-10 Cynthia 採計以學年為單位，每滿3小時調整為採計2分，未滿3小時仍維持不予採計，並取消每一學年採計上限，為三學年採計上現仍為10分
         /// https://3.basecamp.com/4399967/buckets/15852426/todos/4240673684
@@ -307,17 +344,27 @@ namespace ischoolJHWishBase.Calc
                     }
                 }
 
-                //計算積分。  (2021-10 由1分改為2分)
-                foreach (int year in yearScore.Keys.ToArray())
-                    //yearScore[year] = Math.Floor(yearScore[year] / 3);
-                    yearScore[year] = (Math.Floor(yearScore[year] / 3))*2;
+                //計算積分。
+                //2021-10 因疫情影響，由1分改為2分、取消每學年上限
+                // 2021-12 增加判斷，若學生為1或7年級，維持原本的判斷方式，若否則採用2021-10 規則
+                if (student.GradeYear=="1"|| student.GradeYear == "7")
+                {
+                    foreach (int year in yearScore.Keys.ToArray())
+                        yearScore[year] = Math.Floor(yearScore[year] / 3);
 
-                ////限制每學年積分上限。 (2021-10 取消每學年上限)
-                //foreach (int year in yearScore.Keys.ToArray())
-                //{
-                //    if (yearScore[year] > 4)
-                //        yearScore[year] = 4;
-                //}
+                    //限制每學年積分上限。 
+                    foreach (int year in yearScore.Keys.ToArray())
+                    {
+                        if (yearScore[year] > 4)
+                            yearScore[year] = 4;
+                    }
+                }
+                else  //非1、7年級，採用因疫情的新規定
+                {
+                    foreach (int year in yearScore.Keys.ToArray())
+                        yearScore[year] = (Math.Floor(yearScore[year] / 3)) * 2;
+                }
+
 
                 //計算總分。
                 decimal score = 0;
@@ -402,7 +449,7 @@ namespace ischoolJHWishBase.Calc
 
         /// <summary>
         /// 計算領域成績比序積分。
-        /// 2021-10 Cynthia 移除"藝術與人文"，從 健康與體育、綜合活動、藝術、科技 四個領域判斷，1個及格3分，2個及格6分，3個以上及格10分
+        /// 2021-10 Cynthia 移除"藝術與人文"，從 健康與體育、綜合活動、藝術、科技 四個領域判斷，1個及格3分，2個及格6分，3個以上及格10分((適用所有108課綱學生))
         /// https://3.basecamp.com/4399967/buckets/15852426/todos/4240673684
         /// </summary>
         /// <param name="students"></param>

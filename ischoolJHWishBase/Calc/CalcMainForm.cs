@@ -58,6 +58,9 @@ namespace ischoolJHWishBase.Calc
 
             List<StudentExcess> students = StudentIDArray.ConvertAll(x => new StudentExcess() { StudentID = x });
 
+            // 取得學生年級 (用來判斷服務學習時數要怎麼計算)
+            students.GetGradeYear();
+            MainWorker.ReportProgress(5);
             //下載相關計算所需資料。
             students.FillSemesterHistory();
             MainWorker.ReportProgress(10);

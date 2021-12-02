@@ -90,6 +90,11 @@ namespace ischoolJHWishBase.Calc
         /// </summary>
         public decimal CadreFinal { get; set; }
 
+        /// <summary>
+        /// 年級。
+        /// </summary>
+        public string GradeYear { get; set; }
+
         //獎勵明細 (不需計算)
         //JHMeritRecord
     }
