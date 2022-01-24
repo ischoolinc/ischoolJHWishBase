@@ -489,7 +489,7 @@ namespace ExportExcessCreditsBaseData
                         {
                             dr["郵遞區號"] = _AddressRecDict[id].MailingZipCode;
 
-                            dr["地址"] = _AddressRecDict[id].MailingCounty + _AddressRecDict[id].MailingTown + _AddressRecDict[id].MailingDistrict + _AddressRecDict[id].MailingArea + _AddressRecDict[id].MailingDetail;
+                            dr["通訊地址"] = _AddressRecDict[id].MailingCounty + _AddressRecDict[id].MailingTown + _AddressRecDict[id].MailingDistrict + _AddressRecDict[id].MailingArea + _AddressRecDict[id].MailingDetail;
                         }
 
                         if (strType5 == "戶籍")
