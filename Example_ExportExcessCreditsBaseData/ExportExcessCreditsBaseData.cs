@@ -28,6 +28,7 @@ namespace ExportExcessCreditsBaseData
         Dictionary<string, string> _SelectMappingDict1;
         Dictionary<string, string> _SelectMappingDict2;
         Dictionary<string, string> _SelectMappingDict3;
+        Dictionary<string, string> _SelectClassMappingDict;
 
         // 資料存取
         List<string> _StudGradeList;
@@ -45,6 +46,7 @@ namespace ExportExcessCreditsBaseData
         string strType1, strType2, strType3, strType4, strType5, strType6, strType7;
         Dictionary<string, string> _strStudTagMappingDict1;
         Dictionary<string, string> _strStudTagMappingDict2;
+        Dictionary<string, string> _strClassNameMappingDict;
 
         List<string> _SelectStudentList;
         bool _isStudent = false;
@@ -70,6 +72,7 @@ namespace ExportExcessCreditsBaseData
             _StudTagDict = new Dictionary<string, List<string>>();
             _strStudTagMappingDict1 = new Dictionary<string, string>();
             _strStudTagMappingDict2 = new Dictionary<string, string>();
+            _strClassNameMappingDict = new Dictionary<string, string>();
 
             dgSel1cbo1.DropDownStyle = dgSel1cbo2.DropDownStyle = dgSel2cbo1.DropDownStyle = dgSel2cbo2.DropDownStyle = ComboBoxStyle.DropDownList;
             _UDTConfigList = new List<UDTConfig>();
@@ -82,6 +85,8 @@ namespace ExportExcessCreditsBaseData
             _bgWorkerRun = new BackgroundWorker();
             _bgWorkerRun.DoWork += new DoWorkEventHandler(_bgWorkerRun_DoWork);
             _bgWorkerRun.RunWorkerCompleted += new RunWorkerCompletedEventHandler(_bgWorkerRun_RunWorkerCompleted);
+
+            Campus.Windows.DataGridViewImeDecorator dec = new Campus.Windows.DataGridViewImeDecorator(this.dgClass);
         }
 
         private void ExportExcessCreditsBaseData_Load(object sender, EventArgs e)
@@ -105,6 +110,7 @@ namespace ExportExcessCreditsBaseData
             _SelectMappingDict1 = tool.GetExcessCreditsBase1();
             _SelectMappingDict2 = tool.GetExcessCreditsBase2();
             _SelectMappingDict3 = tool.GetExcessCreditsBase3();
+            _SelectClassMappingDict = QueryTransfer.GetClassCodeList();
 
             // 取得設定檔           
             _UDTConfigList = UDTTransfer.UDTConfigSelectByName(conf_name);
@@ -178,6 +184,7 @@ namespace ExportExcessCreditsBaseData
             foreach (string name in _SelectMappingDict3.Keys)
                 dgSel2cbo2.Items.Add(name);
 
+
             // 放入設定值
             LoadConfigData();
 
@@ -197,6 +204,31 @@ namespace ExportExcessCreditsBaseData
                 cboType5.Text = tool.xmlParse1(elm, "地址");
                 cboType6.Text = tool.xmlParse1(elm, "電話");
                 cboType7.Text = tool.xmlParse1(elm, "家長");
+
+                // 班級填入資料
+                dgClass.Rows.Clear();
+                foreach (string name in _SelectClassMappingDict.Keys)
+                {
+                    int rowIdx = dgClass.Rows.Add();
+                    dgClass.Rows[rowIdx].Cells[colClassName.Index].Value = name;
+                    if (elm.Element("班級名稱") != null)
+                    {
+                        foreach (XElement elmss2 in elm.Element("班級名稱").Elements("item"))
+                        {
+                            string className = elmss2.Attribute("name").Value;
+                            string expClassName = elmss2.Attribute("value").Value;
+                            if (name == className)
+                                if (_SelectClassMappingDict.ContainsKey(className))
+                                {
+                                    dgClass.Rows[rowIdx].Cells[colExpClassName.Index].Value = expClassName;
+                                }
+                        }
+                    }
+                }
+
+
+
+
 
                 // 學生身分填入資料
                 dgStudD1.Rows.Clear();
@@ -245,6 +277,20 @@ namespace ExportExcessCreditsBaseData
 
                     _strStudTagMappingDict1.Clear();
                     _strStudTagMappingDict2.Clear();
+                    _strClassNameMappingDict.Clear();
+
+                    // 班級名稱
+                    foreach (DataGridViewRow dr in dgClass.Rows)
+                    {
+                        if (dr.IsNewRow)
+                            continue;
+
+                        string key = dr.Cells[colClassName.Index].Value.ToString();
+                        string val = dr.Cells[colExpClassName.Index].Value == null ? "" : dr.Cells[colExpClassName.Index].Value.ToString();
+
+                        if (!_strClassNameMappingDict.ContainsKey(key))
+                            _strClassNameMappingDict.Add(key, val);
+                    }
 
                     // 學生身分
                     foreach (DataGridViewRow dr in dgStudD1.Rows)
@@ -374,8 +420,18 @@ namespace ExportExcessCreditsBaseData
 
                     dr["學號"] = _StudentDict[id].StudentNumber;
                     dr["班級"] = "";
-                    if (_ClassNameDict.ContainsKey(_StudentDict[id].RefClassID))
-                        dr["班級"] = _ClassNameDict[_StudentDict[id].RefClassID].PadLeft(2, '0');
+
+                    //if (_ClassNameDict.ContainsKey(_StudentDict[id].RefClassID))
+                    //    dr["班級"] = _ClassNameDict[_StudentDict[id].RefClassID].PadLeft(2, '0');
+
+                    if (_strClassNameMappingDict.ContainsKey(_StudentDict[id].Class.Name))
+                        if (_strClassNameMappingDict[_StudentDict[id].Class.Name] != "")
+                            dr["班級"] = _strClassNameMappingDict[_StudentDict[id].Class.Name];
+                        else
+                        {
+                            if (_ClassNameDict.ContainsKey(_StudentDict[id].RefClassID))
+                                dr["班級"] = _ClassNameDict[_StudentDict[id].RefClassID].PadLeft(2, '0');
+                        }
 
                     dr["座號"] = "";
                     if (_StudentDict[id].SeatNo.HasValue)
@@ -618,6 +674,32 @@ namespace ExportExcessCreditsBaseData
             else
                 elm.SetElementValue("家長", cboType7.Text);
 
+            // 班級名稱
+            if (dgClass.Rows.Count > 0)
+            {
+                XElement elm1 = new XElement("班級名稱");
+                foreach (DataGridViewRow dr in dgClass.Rows)
+                {
+                    if (dr.IsNewRow)
+                        continue;
+
+                    string name = "", value = "";
+                    if (dr.Cells[colClassName.Index].Value != null)
+                        name = dr.Cells[colClassName.Index].Value.ToString();
+
+                    if (dr.Cells[colExpClassName.Index].Value != null)
+                        value = dr.Cells[colExpClassName.Index].Value.ToString();
+
+                    if (name != "" && value != "")
+                    {
+                        XElement elm1s = new XElement("item");
+                        elm1s.SetAttributeValue("name", name);
+                        elm1s.SetAttributeValue("value", value);
+                        elm1.Add(elm1s);
+                    }
+                }
+                elm.Add(elm1);
+            }
             // 學生身分
             if (dgStudD1.Rows.Count > 0)
             {

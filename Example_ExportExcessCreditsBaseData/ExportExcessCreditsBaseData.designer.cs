@@ -30,6 +30,7 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnExport = new DevComponents.DotNetBar.ButtonX();
             this.btnExit = new DevComponents.DotNetBar.ButtonX();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
@@ -56,9 +57,14 @@
             this.labelX9 = new DevComponents.DotNetBar.LabelX();
             this.integerInput1 = new DevComponents.Editors.IntegerInput();
             this.labelX10 = new DevComponents.DotNetBar.LabelX();
+            this.dgClass = new DevComponents.DotNetBar.Controls.DataGridViewX();
+            this.labelX11 = new DevComponents.DotNetBar.LabelX();
+            this.colClassName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colExpClassName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgStudD1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgStudD2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.integerInput1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgClass)).BeginInit();
             this.SuspendLayout();
             // 
             // btnExport
@@ -68,7 +74,7 @@
             this.btnExport.AutoSize = true;
             this.btnExport.BackColor = System.Drawing.Color.Transparent;
             this.btnExport.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnExport.Location = new System.Drawing.Point(303, 491);
+            this.btnExport.Location = new System.Drawing.Point(303, 670);
             this.btnExport.Name = "btnExport";
             this.btnExport.Size = new System.Drawing.Size(75, 25);
             this.btnExport.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -83,7 +89,7 @@
             this.btnExit.AutoSize = true;
             this.btnExit.BackColor = System.Drawing.Color.Transparent;
             this.btnExit.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnExit.Location = new System.Drawing.Point(389, 491);
+            this.btnExit.Location = new System.Drawing.Point(389, 670);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(75, 25);
             this.btnExit.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -116,7 +122,7 @@
             // 
             this.labelX2.BackgroundStyle.Class = "";
             this.labelX2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX2.Location = new System.Drawing.Point(19, 381);
+            this.labelX2.Location = new System.Drawing.Point(19, 580);
             this.labelX2.Name = "labelX2";
             this.labelX2.Size = new System.Drawing.Size(60, 21);
             this.labelX2.TabIndex = 4;
@@ -132,7 +138,7 @@
             // 
             this.labelX3.BackgroundStyle.Class = "";
             this.labelX3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX3.Location = new System.Drawing.Point(5, 414);
+            this.labelX3.Location = new System.Drawing.Point(5, 609);
             this.labelX3.Name = "labelX3";
             this.labelX3.Size = new System.Drawing.Size(74, 21);
             this.labelX3.TabIndex = 5;
@@ -148,7 +154,7 @@
             // 
             this.labelX4.BackgroundStyle.Class = "";
             this.labelX4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX4.Location = new System.Drawing.Point(19, 449);
+            this.labelX4.Location = new System.Drawing.Point(19, 638);
             this.labelX4.Name = "labelX4";
             this.labelX4.Size = new System.Drawing.Size(60, 21);
             this.labelX4.TabIndex = 6;
@@ -164,7 +170,7 @@
             // 
             this.labelX5.BackgroundStyle.Class = "";
             this.labelX5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX5.Location = new System.Drawing.Point(20, 45);
+            this.labelX5.Location = new System.Drawing.Point(20, 246);
             this.labelX5.Name = "labelX5";
             this.labelX5.Size = new System.Drawing.Size(60, 21);
             this.labelX5.TabIndex = 7;
@@ -180,7 +186,7 @@
             // 
             this.labelX6.BackgroundStyle.Class = "";
             this.labelX6.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX6.Location = new System.Drawing.Point(19, 209);
+            this.labelX6.Location = new System.Drawing.Point(19, 410);
             this.labelX6.Name = "labelX6";
             this.labelX6.Size = new System.Drawing.Size(60, 21);
             this.labelX6.TabIndex = 8;
@@ -217,7 +223,7 @@
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgStudD1.DefaultCellStyle = dataGridViewCellStyle1;
             this.dgStudD1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
-            this.dgStudD1.Location = new System.Drawing.Point(17, 72);
+            this.dgStudD1.Location = new System.Drawing.Point(17, 273);
             this.dgStudD1.Name = "dgStudD1";
             this.dgStudD1.RowTemplate.Height = 24;
             this.dgStudD1.Size = new System.Drawing.Size(451, 131);
@@ -272,7 +278,7 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgStudD2.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgStudD2.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
-            this.dgStudD2.Location = new System.Drawing.Point(17, 236);
+            this.dgStudD2.Location = new System.Drawing.Point(17, 437);
             this.dgStudD2.Name = "dgStudD2";
             this.dgStudD2.RowTemplate.Height = 24;
             this.dgStudD2.Size = new System.Drawing.Size(451, 131);
@@ -317,7 +323,7 @@
             this.cboType2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboType2.FormattingEnabled = true;
             this.cboType2.ItemHeight = 19;
-            this.cboType2.Location = new System.Drawing.Point(87, 379);
+            this.cboType2.Location = new System.Drawing.Point(87, 578);
             this.cboType2.Name = "cboType2";
             this.cboType2.Size = new System.Drawing.Size(165, 25);
             this.cboType2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -331,7 +337,7 @@
             this.cboType3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboType3.FormattingEnabled = true;
             this.cboType3.ItemHeight = 19;
-            this.cboType3.Location = new System.Drawing.Point(87, 412);
+            this.cboType3.Location = new System.Drawing.Point(87, 607);
             this.cboType3.Name = "cboType3";
             this.cboType3.Size = new System.Drawing.Size(165, 25);
             this.cboType3.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -345,7 +351,7 @@
             this.cboType4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboType4.FormattingEnabled = true;
             this.cboType4.ItemHeight = 19;
-            this.cboType4.Location = new System.Drawing.Point(87, 447);
+            this.cboType4.Location = new System.Drawing.Point(87, 636);
             this.cboType4.Name = "cboType4";
             this.cboType4.Size = new System.Drawing.Size(165, 25);
             this.cboType4.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -359,7 +365,7 @@
             this.cboType5.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboType5.FormattingEnabled = true;
             this.cboType5.ItemHeight = 19;
-            this.cboType5.Location = new System.Drawing.Point(303, 377);
+            this.cboType5.Location = new System.Drawing.Point(303, 578);
             this.cboType5.Name = "cboType5";
             this.cboType5.Size = new System.Drawing.Size(165, 25);
             this.cboType5.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -375,7 +381,7 @@
             // 
             this.labelX7.BackgroundStyle.Class = "";
             this.labelX7.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX7.Location = new System.Drawing.Point(265, 379);
+            this.labelX7.Location = new System.Drawing.Point(265, 580);
             this.labelX7.Name = "labelX7";
             this.labelX7.Size = new System.Drawing.Size(34, 21);
             this.labelX7.TabIndex = 10;
@@ -389,7 +395,7 @@
             this.cboType6.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboType6.FormattingEnabled = true;
             this.cboType6.ItemHeight = 19;
-            this.cboType6.Location = new System.Drawing.Point(303, 410);
+            this.cboType6.Location = new System.Drawing.Point(303, 607);
             this.cboType6.Name = "cboType6";
             this.cboType6.Size = new System.Drawing.Size(165, 25);
             this.cboType6.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -405,7 +411,7 @@
             // 
             this.labelX8.BackgroundStyle.Class = "";
             this.labelX8.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX8.Location = new System.Drawing.Point(265, 412);
+            this.labelX8.Location = new System.Drawing.Point(265, 609);
             this.labelX8.Name = "labelX8";
             this.labelX8.Size = new System.Drawing.Size(34, 21);
             this.labelX8.TabIndex = 12;
@@ -419,7 +425,7 @@
             this.cboType7.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboType7.FormattingEnabled = true;
             this.cboType7.ItemHeight = 19;
-            this.cboType7.Location = new System.Drawing.Point(303, 446);
+            this.cboType7.Location = new System.Drawing.Point(303, 636);
             this.cboType7.Name = "cboType7";
             this.cboType7.Size = new System.Drawing.Size(165, 25);
             this.cboType7.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -435,7 +441,7 @@
             // 
             this.labelX9.BackgroundStyle.Class = "";
             this.labelX9.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX9.Location = new System.Drawing.Point(265, 447);
+            this.labelX9.Location = new System.Drawing.Point(265, 638);
             this.labelX9.Name = "labelX9";
             this.labelX9.Size = new System.Drawing.Size(34, 21);
             this.labelX9.TabIndex = 14;
@@ -476,11 +482,74 @@
             this.labelX10.TabIndex = 16;
             this.labelX10.Text = "畢業年";
             // 
+            // dgClass
+            // 
+            this.dgClass.AllowUserToAddRows = false;
+            this.dgClass.AllowUserToDeleteRows = false;
+            this.dgClass.AllowUserToResizeRows = false;
+            this.dgClass.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgClass.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgClass.BackgroundColor = System.Drawing.Color.White;
+            this.dgClass.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgClass.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colClassName,
+            this.colExpClassName});
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("微軟正黑體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgClass.DefaultCellStyle = dataGridViewCellStyle3;
+            this.dgClass.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
+            this.dgClass.Location = new System.Drawing.Point(17, 77);
+            this.dgClass.Name = "dgClass";
+            this.dgClass.RowHeadersVisible = false;
+            this.dgClass.RowTemplate.Height = 24;
+            this.dgClass.Size = new System.Drawing.Size(451, 163);
+            this.dgClass.TabIndex = 17;
+            // 
+            // labelX11
+            // 
+            this.labelX11.AutoSize = true;
+            this.labelX11.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelX11.BackgroundStyle.Class = "";
+            this.labelX11.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX11.Location = new System.Drawing.Point(20, 50);
+            this.labelX11.Name = "labelX11";
+            this.labelX11.Size = new System.Drawing.Size(60, 21);
+            this.labelX11.TabIndex = 18;
+            this.labelX11.Text = "班級名稱";
+            // 
+            // colClassName
+            // 
+            this.colClassName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.colClassName.HeaderText = "系統內班級名稱";
+            this.colClassName.Name = "colClassName";
+            this.colClassName.ReadOnly = true;
+            this.colClassName.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colClassName.Width = 124;
+            // 
+            // colExpClassName
+            // 
+            this.colExpClassName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colExpClassName.HeaderText = "報名檔班級名稱";
+            this.colExpClassName.Name = "colExpClassName";
+            this.colExpClassName.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
             // ExportExcessCreditsBaseData
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(480, 528);
+            this.ClientSize = new System.Drawing.Size(480, 700);
+            this.Controls.Add(this.dgClass);
+            this.Controls.Add(this.labelX11);
             this.Controls.Add(this.labelX10);
             this.Controls.Add(this.integerInput1);
             this.Controls.Add(this.cboType7);
@@ -510,6 +579,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgStudD1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgStudD2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.integerInput1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgClass)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -543,5 +613,9 @@
         private DevComponents.DotNetBar.LabelX labelX9;
         private DevComponents.Editors.IntegerInput integerInput1;
         private DevComponents.DotNetBar.LabelX labelX10;
+        private DevComponents.DotNetBar.LabelX labelX11;
+        private DevComponents.DotNetBar.Controls.DataGridViewX dgClass;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colClassName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colExpClassName;
     }
 }

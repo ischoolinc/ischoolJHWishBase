@@ -130,5 +130,39 @@ namespace ExportExcessCreditsBaseData
             return retVal;
         }
 
+        /// <summary>
+        /// 取得班級代碼
+        /// </summary>
+        /// <returns></returns>
+        public static Dictionary<string, string> GetClassCodeList()
+        {
+            Dictionary<string, string> retVal = new Dictionary<string, string>();
+
+            // 取得目前班級
+            QueryHelper qh = new QueryHelper();
+            string query = @"SELECT DISTINCT 
+	class.id as cid
+	, class_name
+	, class.grade_year 
+	, display_order
+FROM 
+	class 
+INNER JOIN 
+	student 
+	ON class.id=student.ref_class_id 
+	AND class.grade_year IN (3,9)
+	AND student.status=1 
+ORDER BY 
+	class.grade_year 
+	, display_order
+	, class_name";
+            DataTable dt = qh.Select(query);
+            foreach (DataRow dr in dt.Rows)
+            {
+                string className = dr["class_name"].ToString();
+                retVal.Add(className,"");
+            }
+            return retVal;
+        }
     }
 }
