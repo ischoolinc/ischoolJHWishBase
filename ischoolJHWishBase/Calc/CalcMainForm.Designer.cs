@@ -46,7 +46,7 @@
             this.btnCalc.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCalc.BackColor = System.Drawing.Color.Transparent;
             this.btnCalc.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnCalc.Location = new System.Drawing.Point(675, 490);
+            this.btnCalc.Location = new System.Drawing.Point(669, 455);
             this.btnCalc.Name = "btnCalc";
             this.btnCalc.Size = new System.Drawing.Size(75, 23);
             this.btnCalc.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -83,7 +83,7 @@
             this.dataGridViewX1.RowHeadersVisible = false;
             this.dataGridViewX1.RowTemplate.Height = 24;
             this.dataGridViewX1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewX1.Size = new System.Drawing.Size(738, 461);
+            this.dataGridViewX1.Size = new System.Drawing.Size(732, 426);
             this.dataGridViewX1.TabIndex = 2;
             // 
             // Column1
@@ -97,12 +97,12 @@
             // 
             // Column2
             // 
+            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("微軟正黑體", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.Column2.DefaultCellStyle = dataGridViewCellStyle2;
             this.Column2.HeaderText = "積分計算標準";
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
-            this.Column2.Width = 400;
             // 
             // Column3
             // 
@@ -117,7 +117,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(762, 519);
+            this.ClientSize = new System.Drawing.Size(756, 484);
             this.Controls.Add(this.dataGridViewX1);
             this.Controls.Add(this.btnCalc);
             this.DoubleBuffered = true;
