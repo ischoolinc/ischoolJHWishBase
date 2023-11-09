@@ -12,6 +12,7 @@ using System.Windows.Forms;
 using ischoolJHWishBase.DAO;
 using ExcessCredits = ischoolJHWishBase.DAO.UDT_EnrolmentExcessCredits;
 using FISCA.UDT;
+using DevComponents.DotNetBar.Controls;
 
 namespace ischoolJHWishBase.Calc
 {
@@ -25,6 +26,36 @@ namespace ischoolJHWishBase.Calc
         {
             InitializeComponent();
             StudentIDArray = studentIds;
+
+            dataGridViewX1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            DataGridViewRow row = new DataGridViewRow();
+            row.CreateCells(dataGridViewX1);
+            row.Cells[0].Value = "均衡學習";
+            row.Cells[1].Value = @"健體、藝術、綜合及科技四個領域擇優三個領域，5學期平均成績達60分者，3個領域10分，2個領域6分，1個領域3分。分";
+            row.Cells[2].Value = "10分";
+           
+            dataGridViewX1.Rows.Add(row);
+
+            row = new DataGridViewRow();
+            row.CreateCells(dataGridViewX1);
+            row.Cells[0].Value = "體適能";
+            row.Cells[1].Value = @"單項中等以上每學年3分。身心障礙、重大傷病及體弱學生，比照單項中等以上計分。";
+            row.Cells[2].Value = "20分";
+            dataGridViewX1.Rows.Add(row);
+
+            row = new DataGridViewRow();
+            row.CreateCells(dataGridViewX1);
+            row.Cells[0].Value = "服務學習";
+            row.Cells[1].Value = @"以學年為單位，每3小時計1分，每學年上限4分，未滿3小時部份不予採計。(因疫情影響，110學年度入學學生採計以學年為單位，每滿3小時調整為採計2分，未滿3小時仍維持不予採計，並取消每一學年採計上限，惟三學年採計上限仍為10分)非110學年度入學學生，請先自行計算，系統將於113學年度調整為原計算方式)";
+            row.Cells[2].Value = "10分";
+            dataGridViewX1.Rows.Add(row);
+
+            row = new DataGridViewRow();
+            row.CreateCells(dataGridViewX1);
+            row.Cells[0].Value = "幹部任期";
+            row.Cells[1].Value = @"班級、社團（社長）或全校性幹部任滿1學期2分。";
+            row.Cells[2].Value = "10分";
+            dataGridViewX1.Rows.Add(row);
         }
 
         private void CalcMainForm_Load(object sender, EventArgs e)
