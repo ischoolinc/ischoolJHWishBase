@@ -150,7 +150,9 @@
       <DependentUpon>WishJoinForm.cs</DependentUpon>
     </Compile>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Template\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="Library\Aspose.Cells.dll" />
     <Content Include="Library\Aspose.Cells.xml" />
@@ -199,8 +201,8 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Template\基本資料樣板.xls" />
-    <None Include="Template\比序資料樣板.xls" />
+    <None Include="Resources\基本資料樣板.xlsx" />
+    <None Include="Resources\比序資料樣板.xlsx" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

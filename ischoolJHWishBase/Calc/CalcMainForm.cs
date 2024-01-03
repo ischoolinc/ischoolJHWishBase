@@ -31,7 +31,7 @@ namespace ischoolJHWishBase.Calc
             DataGridViewRow row = new DataGridViewRow();
             row.CreateCells(dataGridViewX1);
             row.Cells[0].Value = "均衡學習";
-            row.Cells[1].Value = @"健體、藝術、綜合及科技四個領域擇優三個領域，5學期平均成績達60分者，3個領域10分，2個領域6分，1個領域3分。分";
+            row.Cells[1].Value = @"健體、藝術、綜合及科技四個領域擇優三個領域，5學期平均成績達60分者，3個領域10分，2個領域6分，1個領域3分。";
             row.Cells[2].Value = "10分";
            
             dataGridViewX1.Rows.Add(row);
@@ -46,8 +46,7 @@ namespace ischoolJHWishBase.Calc
             row = new DataGridViewRow();
             row.CreateCells(dataGridViewX1);
             row.Cells[0].Value = "服務學習";
-            row.Cells[1].Value = @"以學年為單位，每3小時計1分，每學年上限4分，未滿3小時部份不予採計。(目前系統計算方式為：因疫情影響，110學年度入學學生採計以學年為單位，每滿3小時調整為採計2分，未滿3小時仍維持不予採計，並取消每一學年採計上限，惟三學年採計上限仍為10分)
-非110學年度入學學生，請先自行計算，系統將於113學年度調整為原計算方式)";
+            row.Cells[1].Value = "以學年為單位，每3小時計1分，每學年上限4分，未滿3小時部份不予採計。\n\n(目前系統計算方式為：因疫情影響，110學年度入學學生採計以學年為單位，每滿3小時調整為採計2分，未滿3小時仍維持不予採計，並取消每一學年採計上限，惟三學年採計上限仍為10分)\n\n★非110學年度入學學生，請先自行計算，系統將於113學年度調整為原計算方式)";
             row.Cells[2].Value = "10分";
             dataGridViewX1.Rows.Add(row);
 
@@ -181,6 +180,11 @@ namespace ischoolJHWishBase.Calc
             {
                 btnCalc.Enabled = true;
             }
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
