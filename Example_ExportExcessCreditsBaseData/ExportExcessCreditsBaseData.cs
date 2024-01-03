@@ -562,7 +562,7 @@ namespace ExportExcessCreditsBaseData
 
             // 取得樣板
             Workbook wb = new Workbook();
-            wb.Open(new MemoryStream(Properties.Resources.基本資料樣板));
+            wb.Open(new MemoryStream(Properties.Resources.基本資料樣板1));
 
             // 取得樣板欄位索引
             Dictionary<string, int> ColNameDict = new Dictionary<string, int>();
