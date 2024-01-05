@@ -63,16 +63,6 @@ namespace ischoolJHWishBase.Properties {
         /// <summary>
         ///   查詢類型 System.Byte[] 的當地語系化資源。
         /// </summary>
-        internal static byte[] 基本資料樣板 {
-            get {
-                object obj = ResourceManager.GetObject("基本資料樣板", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查詢類型 System.Byte[] 的當地語系化資源。
-        /// </summary>
         internal static byte[] 比序資料樣板 {
             get {
                 object obj = ResourceManager.GetObject("比序資料樣板", resourceCulture);

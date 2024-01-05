@@ -38,9 +38,9 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Aspose.Cells, Version=4.3.0.0, Culture=neutral, PublicKeyToken=9a40d5a4b59e5256, processorArchitecture=MSIL">
+    <Reference Include="Aspose.Cells_201402, Version=7.7.1.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>Library\Aspose.Cells.dll</HintPath>
+      <HintPath>Library\Aspose.Cells_201402.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="DevComponents.DotNetBar2, Version=9.5.0.1, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL">
@@ -121,12 +121,6 @@
     <Compile Include="DAO\UDTTransfer.cs" />
     <Compile Include="DAO\UDT_EnrolmentExcessCredits.cs" />
     <Compile Include="DAO\UDT_EnrolmentExcessInputDate.cs" />
-    <Compile Include="ExportExcessCreditsBaseData.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ExportExcessCreditsBaseData.Designer.cs">
-      <DependentUpon>ExportExcessCreditsBaseData.cs</DependentUpon>
-    </Compile>
     <Compile Include="ExportExcessCreditsData.cs" />
     <Compile Include="ExportGradeSelect\SelectGradeToExport.cs">
       <SubType>Form</SubType>
@@ -154,8 +148,8 @@
     <Folder Include="Template\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Library\Aspose.Cells.dll" />
-    <Content Include="Library\Aspose.Cells.xml" />
+    <Content Include="Library\Aspose.Cells_201402.dll" />
+    <Content Include="Library\Aspose.Cells_201402.xml" />
     <Content Include="Library\DevComponents.DotNetBar2.dll" />
     <Content Include="Library\DevComponents.DotNetBar2.xml" />
     <Content Include="Library\FISCA.Data.dll" />
@@ -186,9 +180,6 @@
     <EmbeddedResource Include="CheckExcessCreditsForm.resx">
       <DependentUpon>CheckExcessCreditsForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ExportExcessCreditsBaseData.resx">
-      <DependentUpon>ExportExcessCreditsBaseData.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="ExportGradeSelect\SelectGradeToExport.resx">
       <DependentUpon>SelectGradeToExport.cs</DependentUpon>
     </EmbeddedResource>
@@ -201,7 +192,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\基本資料樣板.xlsx" />
     <None Include="Resources\比序資料樣板.xlsx" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -412,9 +412,9 @@ namespace ExportExcessCreditsBaseData
 
                 if (_StudentDict.ContainsKey(id))
                 {
-                    dr["考區代碼"] = "";
+                    dr["地區代碼"] = "";
                     if (_SelectMappingDict1.ContainsKey(strType1))
-                        dr["考區代碼"] = _SelectMappingDict1[strType1];
+                        dr["地區代碼"] = _SelectMappingDict1[strType1];
 
                     dr["集報單位代碼"] = K12.Data.School.Code;
 
@@ -437,7 +437,7 @@ namespace ExportExcessCreditsBaseData
                     if (_StudentDict[id].SeatNo.HasValue)
                         dr["座號"] = _StudentDict[id].SeatNo.Value.ToString().PadLeft(2, '0');
 
-                    dr["考生姓名"] = _StudentDict[id].Name;
+                    dr["學生姓名"] = _StudentDict[id].Name;
                     dr["身分證統一編號"] = _StudentDict[id].IDNumber.ToUpper();
 
                     dr["性別"] = "";
@@ -447,23 +447,23 @@ namespace ExportExcessCreditsBaseData
                     if (_StudentDict[id].Gender == "女")
                         dr["性別"] = "2";
 
-                    dr["出生年(民國年)"] = dr["出生月"] = dr["出生日"] = "";
+                    dr["出生年"] = dr["出生月"] = dr["出生日"] = "";
                     if (_StudentDict[id].Birthday.HasValue)
                     {
-                        dr["出生年(民國年)"] = (_StudentDict[id].Birthday.Value.Year - 1911).ToString().PadLeft(3, '0');
+                        dr["出生年"] = (_StudentDict[id].Birthday.Value.Year - 1911).ToString().PadLeft(3, '0');
                         dr["出生月"] = (_StudentDict[id].Birthday.Value.Month).ToString().PadLeft(2, '0');
                         dr["出生日"] = (_StudentDict[id].Birthday.Value.Day).ToString().PadLeft(2, '0');
                     }
 
-                    dr["畢(結)業學校代碼"] = K12.Data.School.Code;
+                    dr["畢業學校代碼"] = K12.Data.School.Code;
 
-                    dr["畢(結)業年(民國年)"] = integerInput1.Value;
-                    dr["畢(結)業"] = "1";
+                    dr["畢業年"] = integerInput1.Value;
+                    dr["畢肄業"] = "1";
                     dr["考生身分"] = "0";
                     dr["身心障礙"] = "0";
                     dr["低收入戶"] = "0";
                     dr["中低收入戶"] = "0";
-                    dr["失業勞工子女"] = "0";
+                    dr["失業勞工"] = "0";
 
                     tmptagList1.Clear();
                     tmptagList2.Clear();
@@ -501,17 +501,17 @@ namespace ExportExcessCreditsBaseData
                     dr["資料授權"] = "1";
 
                     //室內電話,行動電話
-                    dr["市內電話"] = "";
+                    dr["室內電話"] = "";
                     dr["行動電話"] = "";
                     if (_PhoneDict.ContainsKey(id))
                     {
                         if (strType6 == "戶籍電話")
                         {
-                            dr["市內電話"] = tool.ParseTelStr(_PhoneDict[id].Permanent);
+                            dr["室內電話"] = tool.ParseTelStr(_PhoneDict[id].Permanent);
                         }
                         if (strType6 == "聯絡電話")
                         {
-                            dr["市內電話"] = tool.ParseTelStr(_PhoneDict[id].Contact);
+                            dr["室內電話"] = tool.ParseTelStr(_PhoneDict[id].Contact);
                         }
                         dr["行動電話"] = tool.ParseTelStr(_PhoneDict[id].Cell);
                     }
@@ -538,20 +538,20 @@ namespace ExportExcessCreditsBaseData
 
                     // 通訊地址
                     dr["郵遞區號"] = "";
-                    dr["通訊地址"] = "";
+                    dr["地址"] = "";
                     if (_AddressRecDict.ContainsKey(id))
                     {
                         if (strType5 == "聯絡")
                         {
                             dr["郵遞區號"] = _AddressRecDict[id].MailingZipCode;
 
-                            dr["通訊地址"] = _AddressRecDict[id].MailingCounty + _AddressRecDict[id].MailingTown + _AddressRecDict[id].MailingDistrict + _AddressRecDict[id].MailingArea + _AddressRecDict[id].MailingDetail;
+                            dr["地址"] = _AddressRecDict[id].MailingCounty + _AddressRecDict[id].MailingTown + _AddressRecDict[id].MailingDistrict + _AddressRecDict[id].MailingArea + _AddressRecDict[id].MailingDetail;
                         }
 
                         if (strType5 == "戶籍")
                         {
                             dr["郵遞區號"] = _AddressRecDict[id].PermanentZipCode;
-                            dr["通訊地址"] = _AddressRecDict[id].PermanentCounty + _AddressRecDict[id].PermanentTown + _AddressRecDict[id].PermanentDistrict + _AddressRecDict[id].PermanentArea + _AddressRecDict[id].PermanentDetail;
+                            dr["地址"] = _AddressRecDict[id].PermanentCounty + _AddressRecDict[id].PermanentTown + _AddressRecDict[id].PermanentDistrict + _AddressRecDict[id].PermanentArea + _AddressRecDict[id].PermanentDetail;
                         }
 
                     }
