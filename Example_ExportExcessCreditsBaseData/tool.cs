@@ -43,33 +43,34 @@ namespace ExportExcessCreditsBaseData
         static public List<string> GetDataTableColumnsName()
         {
             List<string> retVal = new List<string>();
-            retVal.Add("地區代碼");
+            retVal.Add("考區代碼");
             retVal.Add("集報單位代碼");
             retVal.Add("序號");
             retVal.Add("學號");
             retVal.Add("班級");
             retVal.Add("座號");
-            retVal.Add("學生姓名");
+            retVal.Add("考生姓名");
             retVal.Add("身分證統一編號");
             retVal.Add("性別");
-            retVal.Add("出生年");
+            retVal.Add("出生年(民國年)");
             retVal.Add("出生月");
             retVal.Add("出生日");
-            retVal.Add("畢業學校代碼");
-            retVal.Add("畢業年");
-            retVal.Add("畢肄業");
+            retVal.Add("畢(結)業學校代碼");
+            retVal.Add("畢(結)業年(民國年)");
+            retVal.Add("畢(結)業");
             retVal.Add("考生身分");
             retVal.Add("身心障礙");
-            retVal.Add("就學區");
+            retVal.Add("免試就學區");
             retVal.Add("低收入戶");
             retVal.Add("中低收入戶");
-            retVal.Add("失業勞工");
+            retVal.Add("失業勞工子女");
             retVal.Add("資料授權");
             retVal.Add("家長姓名");
-            retVal.Add("室內電話");
+            retVal.Add("市內電話");
             retVal.Add("行動電話");
             retVal.Add("郵遞區號");
-            retVal.Add("地址");
+            retVal.Add("通訊地址");
+
             return retVal;
         }
 

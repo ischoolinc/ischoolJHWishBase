@@ -197,7 +197,7 @@ namespace ExportExcessCreditsBaseData
             if (_ConfigXML != null)
             {
                 XElement elm = _ConfigXML;
-                cboType1.Text = tool.xmlParse1(elm, "地區代碼");
+                cboType1.Text = tool.xmlParse1(elm, "考區代碼");
                 cboType2.Text = tool.xmlParse1(elm, "低收入戶");
                 cboType3.Text = tool.xmlParse1(elm, "中低收入戶");
                 cboType4.Text = tool.xmlParse1(elm, "失業勞工");
@@ -400,7 +400,7 @@ namespace ExportExcessCreditsBaseData
             // 填入 DataTable
             foreach (string id in exportStudentIDList)
             {
-                // 地區代碼、集報單位代碼、序號、學號、班級、座號、學生姓名、身分證統一編號、性別、出生年、出生月、出生日、
+                // 考區代碼、集報單位代碼、序號、學號、班級、座號、考生姓名、身分證統一編號、性別、出生年、出生月、出生日、
                 // 畢業學校代碼、畢業年、畢肄業、學生身分、身心障礙、就學區、低收入戶、中低收入戶、失業勞工、資料授權、
                 // 家長姓名、室內電話、行動電話、郵遞區號、地址
 
@@ -408,13 +408,16 @@ namespace ExportExcessCreditsBaseData
                 //考區代碼	集報單位代碼	序號	學號	班級	座號	考生姓名	身分證統一編號	性別	出生年(民國年)	出生月	出生日
                 //畢(結)業學校代碼	畢(結)業年(民國年)	畢(結)業	考生身分	身心障礙	免試就學區	低收入戶	中低收入戶	失業勞工子女	
                 //資料授權	家長姓名	市內電話	行動電話	郵遞區號	通訊地址
+
+                // 2024/2/17 調整欄位：考區代碼,集報單位代碼,序號,學號,班級,座號,考生姓名,身分證統一編號,性別,出生年(民國年),出生月,出生日,畢(結)業學校代碼,畢(結)業年(民國年),畢(結)業,考生身分,身心障礙,免試就學區,低收入戶,中低收入戶,失業勞工子女,資料授權,家長姓名,市內電話,行動電話,郵遞區號,通訊地址
+
                 DataRow dr = _dtTable.NewRow();
 
                 if (_StudentDict.ContainsKey(id))
                 {
-                    dr["地區代碼"] = "";
+                    dr["考區代碼"] = "";
                     if (_SelectMappingDict1.ContainsKey(strType1))
-                        dr["地區代碼"] = _SelectMappingDict1[strType1];
+                        dr["考區代碼"] = _SelectMappingDict1[strType1];
 
                     dr["集報單位代碼"] = K12.Data.School.Code;
 
@@ -437,7 +440,7 @@ namespace ExportExcessCreditsBaseData
                     if (_StudentDict[id].SeatNo.HasValue)
                         dr["座號"] = _StudentDict[id].SeatNo.Value.ToString().PadLeft(2, '0');
 
-                    dr["學生姓名"] = _StudentDict[id].Name;
+                    dr["考生姓名"] = _StudentDict[id].Name;
                     dr["身分證統一編號"] = _StudentDict[id].IDNumber.ToUpper();
 
                     dr["性別"] = "";
@@ -447,23 +450,23 @@ namespace ExportExcessCreditsBaseData
                     if (_StudentDict[id].Gender == "女")
                         dr["性別"] = "2";
 
-                    dr["出生年"] = dr["出生月"] = dr["出生日"] = "";
+                    dr["出生年(民國年)"] = dr["出生月"] = dr["出生日"] = "";
                     if (_StudentDict[id].Birthday.HasValue)
                     {
-                        dr["出生年"] = (_StudentDict[id].Birthday.Value.Year - 1911).ToString().PadLeft(3, '0');
+                        dr["出生年(民國年)"] = (_StudentDict[id].Birthday.Value.Year - 1911).ToString().PadLeft(3, '0');
                         dr["出生月"] = (_StudentDict[id].Birthday.Value.Month).ToString().PadLeft(2, '0');
                         dr["出生日"] = (_StudentDict[id].Birthday.Value.Day).ToString().PadLeft(2, '0');
                     }
 
-                    dr["畢業學校代碼"] = K12.Data.School.Code;
+                    dr["畢(結)業學校代碼"] = K12.Data.School.Code;
 
-                    dr["畢業年"] = integerInput1.Value;
-                    dr["畢肄業"] = "1";
+                    dr["畢(結)業年(民國年)"] = integerInput1.Value;
+                    dr["畢(結)業"] = "1";
                     dr["考生身分"] = "0";
                     dr["身心障礙"] = "0";
                     dr["低收入戶"] = "0";
                     dr["中低收入戶"] = "0";
-                    dr["失業勞工"] = "0";
+                    dr["失業勞工子女"] = "0";
 
                     tmptagList1.Clear();
                     tmptagList2.Clear();
@@ -501,17 +504,17 @@ namespace ExportExcessCreditsBaseData
                     dr["資料授權"] = "1";
 
                     //室內電話,行動電話
-                    dr["室內電話"] = "";
+                    dr["市內電話"] = "";
                     dr["行動電話"] = "";
                     if (_PhoneDict.ContainsKey(id))
                     {
                         if (strType6 == "戶籍電話")
                         {
-                            dr["室內電話"] = tool.ParseTelStr(_PhoneDict[id].Permanent);
+                            dr["市內電話"] = tool.ParseTelStr(_PhoneDict[id].Permanent);
                         }
                         if (strType6 == "聯絡電話")
                         {
-                            dr["室內電話"] = tool.ParseTelStr(_PhoneDict[id].Contact);
+                            dr["市內電話"] = tool.ParseTelStr(_PhoneDict[id].Contact);
                         }
                         dr["行動電話"] = tool.ParseTelStr(_PhoneDict[id].Cell);
                     }
@@ -538,20 +541,20 @@ namespace ExportExcessCreditsBaseData
 
                     // 通訊地址
                     dr["郵遞區號"] = "";
-                    dr["地址"] = "";
+                    dr["通訊地址"] = "";
                     if (_AddressRecDict.ContainsKey(id))
                     {
                         if (strType5 == "聯絡")
                         {
                             dr["郵遞區號"] = _AddressRecDict[id].MailingZipCode;
 
-                            dr["地址"] = _AddressRecDict[id].MailingCounty + _AddressRecDict[id].MailingTown + _AddressRecDict[id].MailingDistrict + _AddressRecDict[id].MailingArea + _AddressRecDict[id].MailingDetail;
+                            dr["通訊地址"] = _AddressRecDict[id].MailingCounty + _AddressRecDict[id].MailingTown + _AddressRecDict[id].MailingDistrict + _AddressRecDict[id].MailingArea + _AddressRecDict[id].MailingDetail;
                         }
 
                         if (strType5 == "戶籍")
                         {
                             dr["郵遞區號"] = _AddressRecDict[id].PermanentZipCode;
-                            dr["地址"] = _AddressRecDict[id].PermanentCounty + _AddressRecDict[id].PermanentTown + _AddressRecDict[id].PermanentDistrict + _AddressRecDict[id].PermanentArea + _AddressRecDict[id].PermanentDetail;
+                            dr["通訊地址"] = _AddressRecDict[id].PermanentCounty + _AddressRecDict[id].PermanentTown + _AddressRecDict[id].PermanentDistrict + _AddressRecDict[id].PermanentArea + _AddressRecDict[id].PermanentDetail;
                         }
 
                     }
@@ -640,9 +643,9 @@ namespace ExportExcessCreditsBaseData
 
             XElement elm = new XElement(rootName);
             if (string.IsNullOrEmpty(cboType1.Text))
-                elm.SetElementValue("地區代碼", "");
+                elm.SetElementValue("考區代碼", "");
             else
-                elm.SetElementValue("地區代碼", cboType1.Text);
+                elm.SetElementValue("考區代碼", cboType1.Text);
 
             if (string.IsNullOrEmpty(cboType2.Text))
                 elm.SetElementValue("低收入戶", "");

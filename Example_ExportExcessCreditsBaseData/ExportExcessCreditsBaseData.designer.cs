@@ -58,9 +58,9 @@
             this.integerInput1 = new DevComponents.Editors.IntegerInput();
             this.labelX10 = new DevComponents.DotNetBar.LabelX();
             this.dgClass = new DevComponents.DotNetBar.Controls.DataGridViewX();
-            this.labelX11 = new DevComponents.DotNetBar.LabelX();
             this.colClassName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colExpClassName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.labelX11 = new DevComponents.DotNetBar.LabelX();
             ((System.ComponentModel.ISupportInitialize)(this.dgStudD1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgStudD2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.integerInput1)).BeginInit();
@@ -110,7 +110,7 @@
             this.labelX1.Name = "labelX1";
             this.labelX1.Size = new System.Drawing.Size(60, 21);
             this.labelX1.TabIndex = 3;
-            this.labelX1.Text = "地區代碼";
+            this.labelX1.Text = "考區代碼";
             // 
             // labelX2
             // 
@@ -216,7 +216,7 @@
             this.dgSel1cbo2});
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("微軟正黑體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
@@ -271,7 +271,7 @@
             this.dgSel2cbo2});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("微軟正黑體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
@@ -498,7 +498,7 @@
             this.colExpClassName});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("微軟正黑體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft JhengHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.ControlText;
@@ -511,21 +511,6 @@
             this.dgClass.RowTemplate.Height = 24;
             this.dgClass.Size = new System.Drawing.Size(451, 163);
             this.dgClass.TabIndex = 17;
-            // 
-            // labelX11
-            // 
-            this.labelX11.AutoSize = true;
-            this.labelX11.BackColor = System.Drawing.Color.Transparent;
-            // 
-            // 
-            // 
-            this.labelX11.BackgroundStyle.Class = "";
-            this.labelX11.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX11.Location = new System.Drawing.Point(20, 50);
-            this.labelX11.Name = "labelX11";
-            this.labelX11.Size = new System.Drawing.Size(60, 21);
-            this.labelX11.TabIndex = 18;
-            this.labelX11.Text = "班級名稱";
             // 
             // colClassName
             // 
@@ -542,6 +527,21 @@
             this.colExpClassName.HeaderText = "報名檔班級名稱";
             this.colExpClassName.Name = "colExpClassName";
             this.colExpClassName.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // labelX11
+            // 
+            this.labelX11.AutoSize = true;
+            this.labelX11.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelX11.BackgroundStyle.Class = "";
+            this.labelX11.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX11.Location = new System.Drawing.Point(20, 50);
+            this.labelX11.Name = "labelX11";
+            this.labelX11.Size = new System.Drawing.Size(60, 21);
+            this.labelX11.TabIndex = 18;
+            this.labelX11.Text = "班級名稱";
             // 
             // ExportExcessCreditsBaseData
             // 
