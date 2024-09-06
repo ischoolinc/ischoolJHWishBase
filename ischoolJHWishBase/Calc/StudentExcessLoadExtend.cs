@@ -126,7 +126,7 @@ namespace ischoolJHWishBase.Calc
             sql = string.Format(sql, students.ToPrimaryKeyStringList());
             DataTable table = Utility.Q.Select(sql);
 
-//            Dictionary<string, StudentExcess> StudentLookup = students.ToDictionary(x => x.StudentID);
+            //            Dictionary<string, StudentExcess> StudentLookup = students.ToDictionary(x => x.StudentID);
 
             Dictionary<string, StudentExcess> StudentLookup = new Dictionary<string, StudentExcess>();
             foreach (StudentExcess data in students)
@@ -169,7 +169,7 @@ namespace ischoolJHWishBase.Calc
             sql = string.Format(sql, students.ToPrimaryKeyStringList());
             DataTable table = Utility.Q.Select(sql);
 
-         //   Dictionary<string, StudentExcess> StudentLookup = students.ToDictionary(x => x.StudentID);
+            //   Dictionary<string, StudentExcess> StudentLookup = students.ToDictionary(x => x.StudentID);
 
             Dictionary<string, StudentExcess> StudentLookup = new Dictionary<string, StudentExcess>();
             foreach (StudentExcess data in students)
@@ -220,7 +220,7 @@ namespace ischoolJHWishBase.Calc
             sql = string.Format(sql, students.ToPrimaryKeyStringList());
             DataTable table = Utility.Q.Select(sql);
 
-          //  Dictionary<string, StudentExcess> StudentLookup = students.ToDictionary(x => x.StudentID);
+            //  Dictionary<string, StudentExcess> StudentLookup = students.ToDictionary(x => x.StudentID);
 
             Dictionary<string, StudentExcess> StudentLookup = new Dictionary<string, StudentExcess>();
             foreach (StudentExcess data in students)
@@ -318,8 +318,12 @@ namespace ischoolJHWishBase.Calc
 
         /// <summary>
         /// 計算服務學期時數積分。
-        /// 2021-10 Cynthia 採計以學年為單位，每滿3小時調整為採計2分，未滿3小時仍維持不予採計，並取消每一學年採計上限，為三學年採計上現仍為10分
+        /// 2021-10 Cynthia 採計以學年為單位，每滿3小時調整為採計2分，未滿3小時仍維持不予採計，並取消每一學年採計上限，為三學年採計上現仍為10分        /// 
         /// https://3.basecamp.com/4399967/buckets/15852426/todos/4240673684
+        /// 
+        /// 2024/8/30 CT,以學年為單位，每3小時計1分，每學年上限4分，未滿3小時部份不予採計。
+        /// https://3.basecamp.com/4399967/buckets/15852426/todos/7610122714
+        /// 
         /// </summary>
         /// <param name="students"></param>
         public static void CalcServiceLearning(this List<StudentExcess> students)
@@ -331,9 +335,9 @@ namespace ischoolJHWishBase.Calc
 
                 //每學年的時數。
                 Dictionary<int, decimal> yearScore = new Dictionary<int, decimal>();
-                foreach (SemesterData sems in allSems) 
+                foreach (SemesterData sems in allSems)
                 {
-                   
+
                     if (student.ServiceLearning.ContainsKey(sems))
                     {
 
@@ -347,23 +351,37 @@ namespace ischoolJHWishBase.Calc
                 //計算積分。
                 //2021-10 因疫情影響，由1分改為2分、取消每學年上限
                 // 2021-12 增加判斷，若學生為1或7年級，維持原本的判斷方式，若否則採用2021-10 規則
-                if (student.GradeYear=="1"|| student.GradeYear == "7")
-                {
-                    foreach (int year in yearScore.Keys.ToArray())
-                        yearScore[year] = Math.Floor(yearScore[year] / 3);
 
-                    //限制每學年積分上限。 
-                    foreach (int year in yearScore.Keys.ToArray())
-                    {
-                        if (yearScore[year] > 4)
-                            yearScore[year] = 4;
-                    }
-                }
-                else  //非1、7年級，採用因疫情的新規定
+                //if (student.GradeYear=="1"|| student.GradeYear == "7")
+                //{
+                //    foreach (int year in yearScore.Keys.ToArray())
+                //        yearScore[year] = Math.Floor(yearScore[year] / 3);
+
+                //    //限制每學年積分上限。 
+                //    foreach (int year in yearScore.Keys.ToArray())
+                //    {
+                //        if (yearScore[year] > 4)
+                //            yearScore[year] = 4;
+                //    }
+                //}
+                //else  //非1、7年級，採用因疫情的新規定
+                //{
+                //    foreach (int year in yearScore.Keys.ToArray())
+                //        yearScore[year] = (Math.Floor(yearScore[year] / 3)) * 2;
+                //}
+
+                // 2024/8/30 CT,以學年為單位，每3小時計1分，每學年上限4分，未滿3小時部份不予採計。
+
+                foreach (int year in yearScore.Keys.ToArray())
+                    yearScore[year] = Math.Floor(yearScore[year] / 3);
+
+                //限制每學年積分上限。 
+                foreach (int year in yearScore.Keys.ToArray())
                 {
-                    foreach (int year in yearScore.Keys.ToArray())
-                        yearScore[year] = (Math.Floor(yearScore[year] / 3)) * 2;
+                    if (yearScore[year] > 4)
+                        yearScore[year] = 4;
                 }
+
 
 
                 //計算總分。
