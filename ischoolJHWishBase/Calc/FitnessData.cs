@@ -35,6 +35,12 @@ namespace ischoolJHWishBase.Calc
 
         public string Cardiorespiratory { get; set; }
 
+        // 仰臥捲腹
+        public string Curl { get; set; }
+        // 漸速耐力跑
+        public string Pacer { get; set; }
+        
+
         /// <summary>
         /// 轉換為 Dictionary。
         /// </summary>
@@ -44,6 +50,8 @@ namespace ischoolJHWishBase.Calc
             Add("StandingLongJump", StandingLongJump);
             Add("SitUp", SitUp);
             Add("Cardiorespiratory", Cardiorespiratory);
+            Add("Curl", Curl);
+            Add("Pacer", Pacer);
         }
     }
 }

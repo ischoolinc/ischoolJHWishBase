@@ -160,13 +160,32 @@ namespace ischoolJHWishBase.Calc
             if (students == null || students.Count <= 0)
                 return;
 
-            string sql = @"select ref_student_id,school_year, height_degree,weight_degree,
-                                            sit_and_reach_degree,standing_long_jump_degree,sit_up_degree,cardiorespiratory_degree
-                                        from $ischool_student_fitness 
-                                        where ref_student_id in({0})
-                                        order by school_year";
-
-            sql = string.Format(sql, students.ToPrimaryKeyStringList());
+            //string sql = @"select ref_student_id,school_year, height_degree,weight_degree,
+            //                                sit_and_reach_degree,standing_long_jump_degree,sit_up_degree,cardiorespiratory_degree
+            //                            from $ischool_student_fitness 
+            //                            where ref_student_id in({0})
+            //order by school_year";
+            string sql = string.Format(@"
+            SELECT
+                ref_student_id,
+                school_year,
+                height_degree,
+                weight_degree,
+                sit_and_reach_degree,
+                standing_long_jump_degree,
+                sit_up_degree,
+                cardiorespiratory_degree,
+                curl_degree,
+                pacer_degree
+            FROM
+                $ischool_student_fitness
+            WHERE
+                ref_student_id IN({0}) 
+            ORDER BY
+                school_year
+            ",students.ToPrimaryKeyStringList());
+            
+            //sql = string.Format(sql, students.ToPrimaryKeyStringList());
             DataTable table = Utility.Q.Select(sql);
 
             //   Dictionary<string, StudentExcess> StudentLookup = students.ToDictionary(x => x.StudentID);
@@ -187,6 +206,8 @@ namespace ischoolJHWishBase.Calc
                 string standing_long_jump = row["standing_long_jump_degree"] + "";
                 string sit_up = row["sit_up_degree"] + "";
                 string cardiorespiratory = row["cardiorespiratory_degree"] + "";
+                string curl = row["curl_degree"] + "";
+                string pacer = row["pacer_degree"] + "";
 
                 if (!StudentLookup.ContainsKey(id))
                     continue;
@@ -200,6 +221,12 @@ namespace ischoolJHWishBase.Calc
                 fitness.StandingLongJump = standing_long_jump;
                 fitness.SitUp = sit_up;
                 fitness.Cardiorespiratory = cardiorespiratory;
+                
+                // 仰臥捲腹常模
+                fitness.Curl = curl;
+                // 漸速耐力跑常模
+                fitness.Pacer = pacer;
+
                 fitness.Collect();
 
                 stu.Fitness[school_year] = fitness;
